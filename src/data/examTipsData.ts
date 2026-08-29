@@ -182,6 +182,40 @@ export const EXAM_SUCCESS_TIPS: ExamSuccessTip[] = [
     ],
     proTip: 'Never leave blank pages in between answers; if you finish a question halfway through a page, draw a clean horizontal dividing line and write "P.T.O." or start on the next fresh page.',
     aiouSpecificContext: 'AIOU answer scripts are barcoded and verified; clear question numbering prevents accidental un-evaluated pages.'
+  },
+  {
+    id: 'tip-11',
+    dayNumber: 11,
+    title: 'LMS Workshop 80% Attendance & Online Quiz Mastery',
+    category: 'Scoring Strategy',
+    badge: 'LMS WORKSHOP',
+    impactLevel: 'Game Changer',
+    summary: 'For BS, B.Ed, and Postgraduate students, attending mandatory LMS online workshops and attempting end-of-workshop quizzes is required to pass.',
+    actionChecklist: [
+      'Maintain at least 80% attendance in live Microsoft Teams / LMS workshop sessions.',
+      'Take notes of instructor highlights during each 2-hour daily lecture.',
+      'Attempt the 20-mark online workshop MCQs quiz within the given 48-hour window on LMS.',
+      'Capture screenshots of your quiz score confirmation and final LMS attendance ledger.'
+    ],
+    proTip: 'Missing workshop attendance fails the course automatically with "Re-Workshop" status, even if you ace the theoretical final exam.',
+    aiouSpecificContext: 'Educare Help Desk (03451291610) provides schedule trackers and workshop login troubleshooting support.'
+  },
+  {
+    id: 'tip-12',
+    dayNumber: 12,
+    title: 'Handwriting Speed & 20-Page Sheet Stamina Strategy',
+    category: 'Paper Presentation',
+    badge: 'WRITING SPEED',
+    impactLevel: 'High Impact',
+    summary: 'A standard AIOU final paper requires writing 18 to 22 pages in 180 minutes. Maintain a steady writing speed of ~8.5 minutes per page.',
+    actionChecklist: [
+      'Use comfortable, lightweight ballpoints (e.g., Piano / Dollar 0.7mm) tested during assignments.',
+      'Maintain a relaxed grip without excessive finger pressure to prevent wrist fatigue.',
+      'Aim for 4 to 4.5 pages per 20-mark question with standard 20-22 lines per page.',
+      'Keep handwriting consistently legible; large, spaced-out words are checked faster by examiners.'
+    ],
+    proTip: 'Practice writing one full 4-page answer under a stopwatch 3 days before your first paper to synchronize muscle memory.',
+    aiouSpecificContext: 'Examiners appreciate well-spaced handwriting with clear headings over cramped, illegible paragraphs.'
   }
 ];
 

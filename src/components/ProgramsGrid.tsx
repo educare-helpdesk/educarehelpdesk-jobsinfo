@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { ProgramLevel, ProgramInfo } from '../types';
 import { AIOU_PROGRAMS, HELPDESK_PHONE, HELPDESK_WHATSAPP } from '../data/aiouData';
 import { GraduationCap, BookOpen, Clock, Layers, Sparkles, CheckCircle2, Phone, MessageCircle, ArrowRight, ShieldCheck, Briefcase, Building } from 'lucide-react';
+import { QuickExamTipsCarousel } from './QuickExamTipsCarousel';
 
 interface ProgramsGridProps {
   onSelectProgramForAi: (level: ProgramLevel, code?: string) => void;
@@ -133,6 +134,12 @@ export const ProgramsGrid: React.FC<ProgramsGridProps> = ({
           </div>
         </div>
       </section>
+
+      {/* Auto-Playing Quick Exam Tips Carousel */}
+      <QuickExamTipsCarousel
+        onNavigateTab={setActiveTab}
+        onOpenInquiry={onOpenInquiry}
+      />
 
       {/* Program Levels Navigation */}
       <section className="space-y-4">
