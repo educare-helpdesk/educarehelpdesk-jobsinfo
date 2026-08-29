@@ -1,0 +1,64 @@
+@import "tailwindcss";
+
+/* Robust gradients and solid fallback styles for 100% public visibility */
+.hero-gradient-dark {
+  background-color: #064e3b;
+  background-image: linear-gradient(135deg, #064e3b 0%, #0f172a 60%, #134e4a 100%);
+}
+
+.hero-card-light {
+  background-color: #ffffff;
+  border: 2px solid #cbd5e1;
+}
+
+.btn-bise-green {
+  background-color: #065f46;
+  color: #ffffff;
+}
+.btn-bise-green:hover {
+  background-color: #047857;
+}
+
+.btn-wa-green {
+  background-color: #059669;
+  color: #ffffff;
+}
+.btn-wa-green:hover {
+  background-color: #10b981;
+}
+
+.btn-gold {
+  background-color: #fbbf24;
+  color: #020617;
+}
+.btn-gold:hover {
+  background-color: #f59e0b;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 40s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-none {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
