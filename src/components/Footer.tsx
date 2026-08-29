@@ -60,6 +60,8 @@ export const Footer: React.FC<FooterProps> = ({ setActiveTab }) => {
         <div className="space-y-2">
           <h4 className="text-xs font-bold text-white uppercase tracking-wider">Board & University Portals</h4>
           <ul className="space-y-1 text-[11px] text-slate-400">
+            <li><button onClick={() => setActiveTab('forms-download')} className="hover:text-amber-300 font-bold text-emerald-400">Forms & NOC Download Desk</button></li>
+            <li><button onClick={() => setActiveTab('academic-calendar')} className="hover:text-amber-300 font-bold text-teal-400">Academic Calendar (2026 Deadlines)</button></li>
             <li><button onClick={() => setActiveTab('academic-updates')} className="hover:text-amber-300 font-bold text-rose-400">Academic Updates & News Hub (Live)</button></li>
             <li><button onClick={() => setActiveTab('bise-sargodha')} className="hover:text-amber-300 font-bold text-amber-300">BISE Sargodha Portal (Matric/Inter)</button></li>
             <li><button onClick={() => setActiveTab('jobs')} className="hover:text-amber-300 font-bold text-emerald-400">Punjab Jobs & Govt Notifications</button></li>

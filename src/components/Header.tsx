@@ -1,5 +1,5 @@
 import React from 'react';
-import { Phone, MessageCircle, GraduationCap, Sparkles, BookOpen, Calculator, FileText, Globe, HelpCircle, Briefcase, BookMarked, Clock, Building, Newspaper, Bell, CalendarDays } from 'lucide-react';
+import { Phone, MessageCircle, GraduationCap, Sparkles, BookOpen, Calculator, FileText, Globe, HelpCircle, Briefcase, BookMarked, Clock, Building, Newspaper, Bell, CalendarDays, FileDown } from 'lucide-react';
 import { HELPDESK_PHONE, HELPDESK_WHATSAPP } from '../data/aiouData';
 import { NewsTicker } from './NewsTicker';
 import { ShareButton } from './ShareButton';
@@ -15,6 +15,7 @@ export const Header: React.FC<HeaderProps> = ({ activeTab, setActiveTab, onOpenI
 
   const navItems = [
     { id: 'programs', label: 'AIOU Programs (Matric-PhD)', icon: GraduationCap, color: 'text-emerald-700', activeBg: 'bg-emerald-800', badge: 'All Levels', badgeColor: 'bg-emerald-100 text-emerald-900 border-emerald-300' },
+    { id: 'forms-download', label: 'Forms Download Desk', icon: FileDown, color: 'text-emerald-700', activeBg: 'bg-emerald-850', badge: 'All Forms & NOC', badgeColor: 'bg-emerald-100 text-emerald-950 border-emerald-300 font-black' },
     { id: 'academic-calendar', label: 'Academic Calendar', icon: CalendarDays, color: 'text-teal-700', activeBg: 'bg-teal-900', badge: '2026 Deadlines', badgeColor: 'bg-amber-100 text-amber-950 border-amber-300 font-black' },
     { id: 'academic-updates', label: 'Academic Updates', icon: Newspaper, color: 'text-rose-700', activeBg: 'bg-rose-800', badge: 'Live Grounded', badgeColor: 'bg-rose-100 text-rose-900 border-rose-300' },
     { id: 'bise-sargodha', label: 'BISE Sargodha (Matric/Inter)', icon: Building, color: 'text-blue-700', activeBg: 'bg-blue-800', badge: 'Results & Admission', badgeColor: 'bg-blue-100 text-blue-900 border-blue-300' },

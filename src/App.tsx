@@ -14,6 +14,7 @@ import { FaqSection } from './components/FaqSection';
 import { StudyResources } from './components/StudyResources';
 import { AcademicUpdates } from './components/AcademicUpdates';
 import { AcademicCalendar } from './components/AcademicCalendar';
+import { FormsDownloadHub } from './components/FormsDownloadHub';
 import { Footer } from './components/Footer';
 import { InquiryModal } from './components/InquiryModal';
 import { ProgramLevel } from './types';
@@ -70,6 +71,13 @@ export default function App() {
           <AcademicCalendar
             onNavigateTab={(tab) => setActiveTab(tab)}
             onOpenInquiry={handleOpenInquiry}
+          />
+        )}
+
+        {activeTab === 'forms-download' && (
+          <FormsDownloadHub
+            onNavigateTab={(tab) => setActiveTab(tab)}
+            onOpenInquiry={(title) => handleOpenInquiry(undefined, title)}
           />
         )}
 
