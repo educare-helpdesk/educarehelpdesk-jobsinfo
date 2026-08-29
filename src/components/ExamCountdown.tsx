@@ -284,13 +284,23 @@ export const ExamCountdown: React.FC<ExamCountdownProps> = ({ onNavigateTab }) =
           </div>
 
           {onNavigateTab && (
-            <button
-              onClick={() => onNavigateTab('study-resources')}
-              className="bg-purple-600 hover:bg-purple-500 text-white font-extrabold px-5 py-2.5 rounded-xl text-xs flex items-center justify-center gap-2 shadow-sm transition-all shrink-0 border border-purple-400"
-            >
-              <Sparkles className="w-3.5 h-3.5 text-amber-300" />
-              <span>Launch 30-Day Planner</span>
-            </button>
+            <div className="flex flex-wrap items-center gap-2 shrink-0">
+              <button
+                onClick={() => onNavigateTab('academic-calendar')}
+                className="bg-emerald-700 hover:bg-emerald-600 text-white font-extrabold px-4 py-2.5 rounded-xl text-xs flex items-center justify-center gap-2 shadow-sm transition-all border border-emerald-500"
+              >
+                <Calendar className="w-3.5 h-3.5 text-amber-300" />
+                <span>View Full Academic Calendar</span>
+              </button>
+
+              <button
+                onClick={() => onNavigateTab('study-resources')}
+                className="bg-purple-600 hover:bg-purple-500 text-white font-extrabold px-4 py-2.5 rounded-xl text-xs flex items-center justify-center gap-2 shadow-sm transition-all border border-purple-400"
+              >
+                <Sparkles className="w-3.5 h-3.5 text-amber-300" />
+                <span>30-Day Study Planner</span>
+              </button>
+            </div>
           )}
         </div>
 

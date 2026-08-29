@@ -13,6 +13,7 @@ import { BiseSargodhaPortal } from './components/BiseSargodhaPortal';
 import { FaqSection } from './components/FaqSection';
 import { StudyResources } from './components/StudyResources';
 import { AcademicUpdates } from './components/AcademicUpdates';
+import { AcademicCalendar } from './components/AcademicCalendar';
 import { Footer } from './components/Footer';
 import { InquiryModal } from './components/InquiryModal';
 import { ProgramLevel } from './types';
@@ -62,6 +63,13 @@ export default function App() {
           <AcademicUpdates
             onNavigateTab={(tab) => setActiveTab(tab)}
             onOpenInquiry={() => handleOpenInquiry()}
+          />
+        )}
+
+        {activeTab === 'academic-calendar' && (
+          <AcademicCalendar
+            onNavigateTab={(tab) => setActiveTab(tab)}
+            onOpenInquiry={handleOpenInquiry}
           />
         )}
 

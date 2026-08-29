@@ -1,6 +1,6 @@
 {
   "name": "Educare Help Desk - AIOU Student Portal",
-  "description": "Comprehensive student support desk, search-grounded academic updates & announcements, AI study resources, personalized study schedules, exam preparation tips, solved assignments hub, fee estimator, BISE Sargodha board services, and Punjab job updates. Helpline: 03451291610.",
+  "description": "Comprehensive student support desk, master academic calendar & deadline timelines, search-grounded academic updates & announcements, AI study resources, personalized study schedules, exam preparation tips, solved assignments hub, fee estimator, BISE Sargodha board services, and Punjab job updates. Helpline: 03451291610.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }
