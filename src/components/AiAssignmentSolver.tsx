@@ -185,7 +185,7 @@ export const AiAssignmentSolver: React.FC<AiAssignmentSolverProps> = ({
               <select
                 value={programLevel}
                 onChange={(e) => setProgramLevel(e.target.value as ProgramLevel)}
-                className="w-full bg-slate-50 border border-slate-300 text-slate-900 text-sm font-medium rounded-xl p-3 focus:ring-2 focus:ring-emerald-600 focus:outline-none"
+                className="w-full min-h-[44px] bg-slate-50 border border-slate-300 text-slate-900 text-base sm:text-sm font-medium rounded-xl px-3 py-2.5 focus:ring-2 focus:ring-emerald-600 focus:outline-none"
               >
                 <option value="Matric">Matric (SSC / 9th & 10th)</option>
                 <option value="FA / Intermediate">FA / F.Sc / I.Com (11th & 12th)</option>
@@ -208,7 +208,7 @@ export const AiAssignmentSolver: React.FC<AiAssignmentSolverProps> = ({
                 value={courseCode}
                 onChange={(e) => setCourseCode(e.target.value)}
                 placeholder="e.g. 8601"
-                className="w-full bg-slate-50 border border-slate-300 text-slate-900 text-sm font-bold rounded-xl p-3 focus:ring-2 focus:ring-emerald-600 focus:outline-none"
+                className="w-full min-h-[44px] bg-slate-50 border border-slate-300 text-slate-900 text-base sm:text-sm font-bold rounded-xl px-3 py-2.5 focus:ring-2 focus:ring-emerald-600 focus:outline-none"
               />
             </div>
 
@@ -222,7 +222,7 @@ export const AiAssignmentSolver: React.FC<AiAssignmentSolverProps> = ({
                 onChange={(e) => setPrompt(e.target.value)}
                 rows={5}
                 placeholder="Paste question from your AIOU assignment book, e.g. 'Question 1: Explain lesson planning steps for secondary level students with examples...'"
-                className="w-full bg-slate-50 border border-slate-300 text-slate-900 text-sm p-3 rounded-xl focus:ring-2 focus:ring-emerald-600 focus:outline-none leading-relaxed"
+                className="w-full bg-slate-50 border border-slate-300 text-slate-900 text-base sm:text-sm p-3 rounded-xl focus:ring-2 focus:ring-emerald-600 focus:outline-none leading-relaxed"
               />
             </div>
 
@@ -230,7 +230,7 @@ export const AiAssignmentSolver: React.FC<AiAssignmentSolverProps> = ({
             <button
               onClick={() => handleSolve()}
               disabled={loading}
-              className="w-full bg-emerald-800 hover:bg-emerald-900 text-white font-bold py-3.5 px-4 rounded-xl transition-all flex items-center justify-center gap-2 shadow-sm text-sm"
+              className="w-full min-h-[48px] bg-emerald-800 hover:bg-emerald-900 text-white font-bold py-3.5 px-4 rounded-xl transition-all flex items-center justify-center gap-2 shadow-sm text-sm active:scale-98"
             >
               {loading ? (
                 <>

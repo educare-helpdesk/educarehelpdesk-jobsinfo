@@ -117,7 +117,7 @@ export const FeeCalculator: React.FC = () => {
               <select
                 value={selectedLevel}
                 onChange={(e) => setSelectedLevel(e.target.value as ProgramLevel)}
-                className="w-full bg-slate-50 border border-slate-300 text-slate-900 font-bold rounded-xl p-3 text-sm focus:ring-2 focus:ring-emerald-600 focus:outline-none"
+                className="w-full min-h-[44px] bg-slate-50 border border-slate-300 text-slate-900 font-bold rounded-xl px-3 py-2.5 text-base sm:text-sm focus:ring-2 focus:ring-emerald-600 focus:outline-none"
               >
                 <option value="Matric">Matriculation (SSC)</option>
                 <option value="FA / Intermediate">FA / F.Sc / I.Com (HSSC)</option>
@@ -249,12 +249,12 @@ export const FeeCalculator: React.FC = () => {
             <p className="text-xs text-slate-300 leading-relaxed">
               Educare Help Desk can assist you in generating fee challan, online form filling, and document verification.
             </p>
-            <div className="pt-2 flex flex-wrap gap-3 text-xs font-bold">
+            <div className="pt-2 flex flex-col sm:flex-row flex-wrap gap-2.5 sm:gap-3 text-xs font-bold">
               <a
                 href={`tel:${HELPDESK_PHONE}`}
-                className="bg-amber-400 text-slate-950 px-4 py-2.5 rounded-xl flex items-center gap-1.5"
+                className="w-full sm:w-auto min-h-[44px] justify-center bg-amber-400 hover:bg-amber-300 text-slate-950 px-4 py-2.5 rounded-xl flex items-center gap-1.5 shadow-sm active:scale-95 transition-transform"
               >
-                <Phone className="w-4 h-4" />
+                <Phone className="w-4 h-4 text-slate-950" />
                 <span>Call {HELPDESK_PHONE}</span>
               </a>
 
@@ -262,7 +262,7 @@ export const FeeCalculator: React.FC = () => {
                 href={`https://wa.me/${HELPDESK_WHATSAPP}?text=${encodeURIComponent(`Hello Educare Help Desk, I need help for AIOU ${selectedLevel} admission and fee challan.`)}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-emerald-700 text-white px-4 py-2.5 rounded-xl flex items-center gap-1.5"
+                className="w-full sm:w-auto min-h-[44px] justify-center bg-emerald-700 hover:bg-emerald-600 text-white px-4 py-2.5 rounded-xl flex items-center gap-1.5 shadow-sm active:scale-95 transition-transform"
               >
                 <MessageCircle className="w-4 h-4 text-emerald-300" />
                 <span>WhatsApp 03451291610</span>

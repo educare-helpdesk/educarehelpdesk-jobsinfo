@@ -56,6 +56,33 @@ export const QuickExamTipsCarousel: React.FC<QuickExamTipsCarouselProps> = ({
   const timerRef = useRef<NodeJS.Timeout | null>(null);
   const [direction, setDirection] = useState<number>(1);
 
+  // Mobile Touch Swipe Handling
+  const touchStartXRef = useRef<number | null>(null);
+  const touchDeltaXRef = useRef<number>(0);
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartXRef.current = e.touches[0].clientX;
+    touchDeltaXRef.current = 0;
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    if (touchStartXRef.current === null) return;
+    touchDeltaXRef.current = e.touches[0].clientX - touchStartXRef.current;
+  };
+
+  const handleTouchEnd = () => {
+    if (touchStartXRef.current === null) return;
+    const deltaX = touchDeltaXRef.current;
+    const minSwipeDistance = 40; // 40px swipe threshold
+    if (deltaX < -minSwipeDistance) {
+      handleNext();
+    } else if (deltaX > minSwipeDistance) {
+      handlePrev();
+    }
+    touchStartXRef.current = null;
+    touchDeltaXRef.current = 0;
+  };
+
   // Filter tips based on category
   const filteredTips = selectedCategory === 'All Tips'
     ? EXAM_SUCCESS_TIPS
@@ -214,87 +241,98 @@ export const QuickExamTipsCarousel: React.FC<QuickExamTipsCarouselProps> = ({
   return (
     <section 
       id="quick-exam-tips-carousel-section"
-      className="relative overflow-hidden rounded-3xl bg-slate-900 border-2 border-emerald-600/80 shadow-xl text-white transition-all"
+      className="relative overflow-hidden rounded-3xl bg-slate-900 border-2 border-emerald-600/80 shadow-xl text-white transition-all select-none sm:select-auto touch-pan-y"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
+      onTouchStart={handleTouchStart}
+      onTouchMove={handleTouchMove}
+      onTouchEnd={handleTouchEnd}
     >
       {/* Top Header Bar with Auto-Play Status, Categories & Controls */}
-      <div className="p-4 sm:p-5 border-b border-slate-800/90 bg-slate-950/90 flex flex-col md:flex-row md:items-center justify-between gap-3">
+      <div className="p-3.5 sm:p-5 border-b border-slate-800/90 bg-slate-950/90 flex flex-col md:flex-row md:items-center justify-between gap-3">
         {/* Title & Live Badge */}
-        <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-2xl bg-amber-400 flex items-center justify-center text-slate-950 shadow-md shrink-0">
-            <Lightbulb className="w-5 h-5 fill-slate-950" />
-          </div>
-          <div>
-            <div className="flex items-center gap-2">
-              <span className="inline-flex items-center gap-1 bg-gradient-to-r from-emerald-500 to-teal-500 text-slate-950 text-[10px] font-black px-2 py-0.5 rounded-full uppercase tracking-wider shadow-xs">
-                <Flame className="w-3 h-3 fill-slate-950" />
-                <span>Quick Exam Tips</span>
-              </span>
-              <span className="text-[11px] font-bold text-amber-300">
-                Auto-Playing Study Advice
-              </span>
+        <div className="flex items-center justify-between w-full md:w-auto">
+          <div className="flex items-center gap-2.5 sm:gap-3">
+            <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-2xl bg-amber-400 flex items-center justify-center text-slate-950 shadow-md shrink-0">
+              <Lightbulb className="w-5 h-5 fill-slate-950" />
             </div>
-            <h2 className="text-base sm:text-lg font-bold font-serif text-white flex items-center gap-1.5">
-              <span>Exam Prep & Scoring Secrets</span>
-              <span className="text-xs font-sans text-slate-400 font-normal hidden sm:inline">• 80%+ Scoring Guidelines</span>
-            </h2>
+            <div>
+              <div className="flex items-center gap-2">
+                <span className="inline-flex items-center gap-1 bg-gradient-to-r from-emerald-500 to-teal-500 text-slate-950 text-[10px] font-black px-2 py-0.5 rounded-full uppercase tracking-wider shadow-xs">
+                  <Flame className="w-3 h-3 fill-slate-950" />
+                  <span>Quick Exam Tips</span>
+                </span>
+                <span className="text-[10px] sm:text-[11px] font-bold text-amber-300">
+                  Auto-Playing
+                </span>
+              </div>
+              <h2 className="text-sm sm:text-lg font-bold font-serif text-white flex items-center gap-1.5">
+                <span>Exam Prep & Scoring Secrets</span>
+                <span className="text-xs font-sans text-slate-400 font-normal hidden sm:inline">• 80%+ Scoring Guidelines</span>
+              </h2>
+            </div>
           </div>
+
+          <span className="md:hidden text-[10px] font-semibold text-emerald-300/80 bg-slate-900 px-2 py-1 rounded-lg border border-slate-800 shrink-0">
+            Swipe ⇄
+          </span>
         </div>
 
         {/* Carousel Control Toolbar */}
-        <div className="flex items-center flex-wrap gap-2 self-start md:self-center">
+        <div className="flex items-center justify-between md:justify-end gap-2 w-full md:w-auto">
           {/* Slide Indicator Badge */}
-          <div className="bg-slate-900 border border-slate-800 px-3 py-1.5 rounded-xl text-xs font-mono font-bold text-amber-300 flex items-center gap-1.5">
+          <div className="bg-slate-900 border border-slate-800 px-2.5 py-1.5 rounded-xl text-xs font-mono font-bold text-amber-300 flex items-center gap-1.5">
             <Sparkles className="w-3.5 h-3.5 text-amber-400" />
             <span>Tip {currentIndex + 1} of {filteredTips.length}</span>
           </div>
 
-          {/* Play/Pause Button */}
-          <button
-            id="carousel-play-pause-btn"
-            onClick={() => setIsPlaying(!isPlaying)}
-            className={`p-2 rounded-xl border text-xs font-bold transition-all flex items-center gap-1 ${
-              isPlaying 
-                ? 'bg-emerald-950/80 border-emerald-600 text-emerald-300 hover:bg-emerald-900' 
-                : 'bg-amber-950/80 border-amber-600 text-amber-300 hover:bg-amber-900'
-            }`}
-            title={isPlaying ? 'Pause Auto-Play (or hover card)' : 'Resume Auto-Play'}
-            aria-label={isPlaying ? 'Pause Carousel' : 'Play Carousel'}
-          >
-            {isPlaying ? (
-              <>
-                <Pause className="w-3.5 h-3.5 fill-emerald-300" />
-                <span className="text-[11px] hidden sm:inline">Auto-Playing</span>
-              </>
-            ) : (
-              <>
-                <Play className="w-3.5 h-3.5 fill-amber-300" />
-                <span className="text-[11px] hidden sm:inline">Paused</span>
-              </>
-            )}
-          </button>
+          <div className="flex items-center gap-1.5">
+            {/* Play/Pause Button */}
+            <button
+              id="carousel-play-pause-btn"
+              onClick={() => setIsPlaying(!isPlaying)}
+              className={`min-h-[40px] px-2.5 py-1.5 rounded-xl border text-xs font-bold transition-all flex items-center gap-1.5 ${
+                isPlaying 
+                  ? 'bg-emerald-950/80 border-emerald-600 text-emerald-300 hover:bg-emerald-900' 
+                  : 'bg-amber-950/80 border-amber-600 text-amber-300 hover:bg-amber-900'
+              }`}
+              title={isPlaying ? 'Pause Auto-Play (or hover card)' : 'Resume Auto-Play'}
+              aria-label={isPlaying ? 'Pause Carousel' : 'Play Carousel'}
+            >
+              {isPlaying ? (
+                <>
+                  <Pause className="w-3.5 h-3.5 fill-emerald-300" />
+                  <span className="text-[11px] hidden sm:inline">Auto-Playing</span>
+                </>
+              ) : (
+                <>
+                  <Play className="w-3.5 h-3.5 fill-amber-300" />
+                  <span className="text-[11px] hidden sm:inline">Paused</span>
+                </>
+              )}
+            </button>
 
-          {/* Navigation Arrows */}
-          <div className="flex items-center gap-1 bg-slate-900 p-0.5 rounded-xl border border-slate-800">
-            <button
-              id="carousel-prev-btn"
-              onClick={handlePrev}
-              className="p-1.5 hover:bg-slate-800 text-slate-300 hover:text-white rounded-lg transition-all"
-              title="Previous Tip (Left Arrow)"
-              aria-label="Previous Tip"
-            >
-              <ChevronLeft className="w-4 h-4" />
-            </button>
-            <button
-              id="carousel-next-btn"
-              onClick={handleNext}
-              className="p-1.5 hover:bg-slate-800 text-slate-300 hover:text-white rounded-lg transition-all"
-              title="Next Tip (Right Arrow)"
-              aria-label="Next Tip"
-            >
-              <ChevronRight className="w-4 h-4" />
-            </button>
+            {/* Navigation Arrows */}
+            <div className="flex items-center gap-1 bg-slate-900 p-0.5 rounded-xl border border-slate-800">
+              <button
+                id="carousel-prev-btn"
+                onClick={handlePrev}
+                className="min-h-[38px] min-w-[38px] flex items-center justify-center hover:bg-slate-800 text-slate-300 hover:text-white rounded-lg transition-all"
+                title="Previous Tip (Left Arrow)"
+                aria-label="Previous Tip"
+              >
+                <ChevronLeft className="w-4 h-4" />
+              </button>
+              <button
+                id="carousel-next-btn"
+                onClick={handleNext}
+                className="min-h-[38px] min-w-[38px] flex items-center justify-center hover:bg-slate-800 text-slate-300 hover:text-white rounded-lg transition-all"
+                title="Next Tip (Right Arrow)"
+                aria-label="Next Tip"
+              >
+                <ChevronRight className="w-4 h-4" />
+              </button>
+            </div>
           </div>
 
           {/* Hub Navigation Button */}
@@ -347,7 +385,7 @@ export const QuickExamTipsCarousel: React.FC<QuickExamTipsCarouselProps> = ({
       </div>
 
       {/* Main Active Slide Display with AnimatePresence */}
-      <div className="p-5 sm:p-7 min-h-[300px] flex flex-col justify-between relative">
+      <div className="p-4 sm:p-7 min-h-[300px] flex flex-col justify-between relative">
         <AnimatePresence custom={direction} mode="wait">
           <motion.div
             key={currentTip.id}
@@ -360,7 +398,7 @@ export const QuickExamTipsCarousel: React.FC<QuickExamTipsCarouselProps> = ({
           >
             {/* Slide Top Metadata Row */}
             <div className="flex flex-wrap items-center justify-between gap-2.5">
-              <div className="flex items-center gap-2">
+              <div className="flex items-center flex-wrap gap-2">
                 <span className={`inline-flex items-center gap-1 text-[10px] font-black px-2.5 py-0.5 rounded-md uppercase tracking-wider shadow-xs border ${theme.badge}`}>
                   <CategoryIcon className="w-3 h-3" />
                   <span>{currentTip.badge}</span>
@@ -383,7 +421,7 @@ export const QuickExamTipsCarousel: React.FC<QuickExamTipsCarouselProps> = ({
               <div className="flex items-center gap-2">
                 <button
                   onClick={(e) => toggleBookmark(currentTip.id, e)}
-                  className={`text-xs font-bold px-2.5 py-1 rounded-lg border transition-all flex items-center gap-1 ${
+                  className={`min-h-[38px] text-xs font-bold px-3 py-1.5 rounded-xl border transition-all flex items-center gap-1 ${
                     isBookmarked
                       ? 'bg-emerald-800 text-emerald-200 border-emerald-600'
                       : 'bg-slate-800/90 text-slate-300 border-slate-700 hover:bg-slate-700'
@@ -405,7 +443,7 @@ export const QuickExamTipsCarousel: React.FC<QuickExamTipsCarouselProps> = ({
 
                 <button
                   onClick={(e) => copyTipText(currentTip, e)}
-                  className="px-2.5 py-1 bg-slate-800/90 hover:bg-slate-700 text-slate-300 hover:text-white rounded-lg border border-slate-700 text-xs font-bold transition-all flex items-center gap-1"
+                  className="min-h-[38px] px-3 py-1.5 bg-slate-800/90 hover:bg-slate-700 text-slate-300 hover:text-white rounded-xl border border-slate-700 text-xs font-bold transition-all flex items-center gap-1"
                   title="Copy Tip to Clipboard"
                 >
                   {copiedId === currentTip.id ? (

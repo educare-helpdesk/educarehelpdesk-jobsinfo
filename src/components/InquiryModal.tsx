@@ -76,30 +76,31 @@ export const InquiryModal: React.FC<InquiryModalProps> = ({
   };
 
   return (
-    <div className="fixed inset-0 z-50 bg-slate-950/70 backdrop-blur-xs flex items-center justify-center p-4">
-      <div className="bg-white rounded-3xl max-w-lg w-full border border-slate-200 shadow-2xl overflow-hidden animate-in fade-in zoom-in-95 duration-150">
+    <div className="fixed inset-0 z-50 bg-slate-950/70 backdrop-blur-xs flex items-center justify-center p-2.5 sm:p-4">
+      <div className="bg-white rounded-3xl max-w-lg w-full border border-slate-200 shadow-2xl overflow-hidden max-h-[92dvh] flex flex-col animate-in fade-in zoom-in-95 duration-150">
         {/* Header */}
-        <div className="bg-emerald-900 text-white p-5 flex items-center justify-between border-b border-emerald-800">
+        <div className="bg-emerald-900 text-white p-4 sm:p-5 flex items-center justify-between border-b border-emerald-800 shrink-0">
           <div className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-lg bg-amber-400 text-slate-950 flex items-center justify-center font-bold">
+            <div className="w-9 h-9 rounded-xl bg-amber-400 text-slate-950 flex items-center justify-center font-bold shrink-0">
               <GraduationCap className="w-5 h-5" />
             </div>
             <div>
-              <h3 className="text-base font-bold font-serif text-amber-100">Educare Help Desk (03451291610)</h3>
-              <p className="text-[11px] text-emerald-200">AIOU Student Support & Solved Assignments Desk</p>
+              <h3 className="text-sm sm:text-base font-bold font-serif text-amber-100">Educare Help Desk (03451291610)</h3>
+              <p className="text-[10px] sm:text-[11px] text-emerald-200">AIOU Student Support & Solved Assignments Desk</p>
             </div>
           </div>
 
           <button
             onClick={onClose}
-            className="p-1.5 text-slate-300 hover:text-white hover:bg-emerald-800 rounded-lg transition-colors"
+            className="min-h-[44px] min-w-[44px] flex items-center justify-center text-slate-300 hover:text-white hover:bg-emerald-800 rounded-xl transition-colors"
+            aria-label="Close modal"
           >
             <X className="w-5 h-5" />
           </button>
         </div>
 
         {/* Body Form */}
-        <form onSubmit={handleSubmit} className="p-6 space-y-4 text-xs">
+        <form onSubmit={handleSubmit} className="p-4 sm:p-6 space-y-3.5 text-xs overflow-y-auto flex-1">
           <div>
             <label className="block font-bold text-slate-700 mb-1">Student Full Name *</label>
             <input
@@ -108,29 +109,29 @@ export const InquiryModal: React.FC<InquiryModalProps> = ({
               value={formData.studentName}
               onChange={(e) => setFormData(prev => ({ ...prev, studentName: e.target.value }))}
               placeholder="Your Name"
-              className="w-full bg-slate-50 border border-slate-300 rounded-xl p-2.5 font-medium text-slate-900 focus:ring-2 focus:ring-emerald-600 focus:outline-none text-sm"
+              className="w-full bg-slate-50 border border-slate-300 rounded-xl p-3 font-medium text-slate-900 focus:ring-2 focus:ring-emerald-600 focus:outline-none text-base sm:text-sm"
             />
           </div>
 
           <div>
             <label className="block font-bold text-slate-700 mb-1">Phone / WhatsApp Number *</label>
             <input
-              type="text"
+              type="tel"
               required
               value={formData.phone}
               onChange={(e) => setFormData(prev => ({ ...prev, phone: e.target.value }))}
               placeholder="e.g. 03451234567"
-              className="w-full bg-slate-50 border border-slate-300 rounded-xl p-2.5 font-medium text-slate-900 focus:ring-2 focus:ring-emerald-600 focus:outline-none text-sm"
+              className="w-full bg-slate-50 border border-slate-300 rounded-xl p-3 font-medium text-slate-900 focus:ring-2 focus:ring-emerald-600 focus:outline-none text-base sm:text-sm"
             />
           </div>
 
-          <div className="grid grid-cols-2 gap-3">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <div>
               <label className="block font-bold text-slate-700 mb-1">Program Level</label>
               <select
                 value={formData.programLevel}
                 onChange={(e) => setFormData(prev => ({ ...prev, programLevel: e.target.value as ProgramLevel }))}
-                className="w-full bg-slate-50 border border-slate-300 rounded-xl p-2.5 font-medium text-slate-900 focus:ring-2 focus:ring-emerald-600 focus:outline-none"
+                className="w-full bg-slate-50 border border-slate-300 rounded-xl p-3 font-medium text-slate-900 focus:ring-2 focus:ring-emerald-600 focus:outline-none text-base sm:text-sm"
               >
                 <option value="General Inquiry">General Inquiry</option>
                 <option value="Matric">Matric</option>
@@ -151,7 +152,7 @@ export const InquiryModal: React.FC<InquiryModalProps> = ({
                 value={formData.courseCode}
                 onChange={(e) => setFormData(prev => ({ ...prev, courseCode: e.target.value }))}
                 placeholder="e.g. 8601"
-                className="w-full bg-slate-50 border border-slate-300 rounded-xl p-2.5 font-medium text-slate-900 focus:ring-2 focus:ring-emerald-600 focus:outline-none"
+                className="w-full bg-slate-50 border border-slate-300 rounded-xl p-3 font-medium text-slate-900 focus:ring-2 focus:ring-emerald-600 focus:outline-none text-base sm:text-sm"
               />
             </div>
           </div>
@@ -161,7 +162,7 @@ export const InquiryModal: React.FC<InquiryModalProps> = ({
             <select
               value={formData.serviceNeeded}
               onChange={(e) => setFormData(prev => ({ ...prev, serviceNeeded: e.target.value as any }))}
-              className="w-full bg-slate-50 border border-slate-300 rounded-xl p-2.5 font-medium text-slate-900 focus:ring-2 focus:ring-emerald-600 focus:outline-none"
+              className="w-full bg-slate-50 border border-slate-300 rounded-xl p-3 font-medium text-slate-900 focus:ring-2 focus:ring-emerald-600 focus:outline-none text-base sm:text-sm"
             >
               <option value="Assignment Assistance">Assignment Assistance & Solved Papers</option>
               <option value="Admission Help">New Admission Form & Eligibility</option>
@@ -179,14 +180,14 @@ export const InquiryModal: React.FC<InquiryModalProps> = ({
               value={formData.message}
               onChange={(e) => setFormData(prev => ({ ...prev, message: e.target.value }))}
               placeholder="How can Educare Help Desk assist you today?"
-              className="w-full bg-slate-50 border border-slate-300 rounded-xl p-2.5 font-medium text-slate-900 focus:ring-2 focus:ring-emerald-600 focus:outline-none"
+              className="w-full bg-slate-50 border border-slate-300 rounded-xl p-3 font-medium text-slate-900 focus:ring-2 focus:ring-emerald-600 focus:outline-none text-base sm:text-sm"
             />
           </div>
 
           <button
             type="submit"
             disabled={loading}
-            className="w-full bg-emerald-800 hover:bg-emerald-900 text-white font-bold py-3 px-4 rounded-xl transition-all text-sm flex items-center justify-center gap-2 shadow-sm"
+            className="w-full min-h-[48px] bg-emerald-800 hover:bg-emerald-900 text-white font-bold py-3 px-4 rounded-xl transition-all text-sm flex items-center justify-center gap-2 shadow-sm"
           >
             <Send className="w-4 h-4 text-amber-300" />
             <span>Submit & Connect to 03451291610</span>
@@ -208,9 +209,9 @@ export const InquiryModal: React.FC<InquiryModalProps> = ({
           )}
         </form>
 
-        <div className="bg-slate-50 px-6 py-3 border-t border-slate-100 text-center text-xs text-slate-500 flex justify-between items-center">
+        <div className="bg-slate-50 px-4 sm:px-6 py-3 border-t border-slate-100 text-center text-xs text-slate-500 flex justify-between items-center shrink-0">
           <span>Or call directly:</span>
-          <a href={`tel:${HELPDESK_PHONE}`} className="font-extrabold text-emerald-800 hover:underline">{HELPDESK_PHONE}</a>
+          <a href={`tel:${HELPDESK_PHONE}`} className="font-extrabold text-emerald-800 hover:underline min-h-[44px] flex items-center">{HELPDESK_PHONE}</a>
         </div>
       </div>
     </div>
