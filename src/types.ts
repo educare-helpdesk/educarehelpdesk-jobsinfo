@@ -110,3 +110,36 @@ export interface AcademicUpdateItem {
   groundingSources?: GroundingSource[];
 }
 
+export interface StudentCourseDeadline {
+  code: string;
+  name: string;
+  ass1DueDate: string;
+  ass1Status: 'Pending' | 'Draft' | 'Submitted';
+  ass2DueDate: string;
+  ass2Status: 'Pending' | 'Draft' | 'Submitted';
+  submissionType: 'LMS Upload (PDF)' | 'By Post / Courier';
+  tutorName: string;
+  tutorCity: string;
+}
+
+export interface StudentProfile {
+  id: string;
+  studentId: string;
+  rollNo: string;
+  name: string;
+  programLevel: ProgramLevel;
+  programName: string;
+  semester: string;
+  semesterNumber: number;
+  totalSemesters: number;
+  campus: string;
+  feeStatus: 'Paid & Verified' | 'Pending Verification' | 'Concession Approved';
+  lmsStatus: 'Active & Enrolled' | 'Workshop Scheduled' | 'Manual Submission';
+  workshopsCompleted: number;
+  workshopsTotal: number;
+  tutorsAllocatedCount: number;
+  tutorsTotalCount: number;
+  rollNoSlipStatus: 'Available Soon' | 'Issued' | 'In Processing';
+  courses: StudentCourseDeadline[];
+}
+

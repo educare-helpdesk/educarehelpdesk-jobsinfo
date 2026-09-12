@@ -3,6 +3,7 @@ import { ProgramLevel, ProgramInfo } from '../types';
 import { AIOU_PROGRAMS, HELPDESK_PHONE, HELPDESK_WHATSAPP } from '../data/aiouData';
 import { GraduationCap, BookOpen, Clock, Layers, Sparkles, CheckCircle2, Phone, MessageCircle, ArrowRight, ShieldCheck, Briefcase, Building } from 'lucide-react';
 import { QuickExamTipsCarousel } from './QuickExamTipsCarousel';
+import { StudentQuickStats } from './StudentQuickStats';
 
 interface ProgramsGridProps {
   onSelectProgramForAi: (level: ProgramLevel, code?: string) => void;
@@ -134,6 +135,13 @@ export const ProgramsGrid: React.FC<ProgramsGridProps> = ({
           </div>
         </div>
       </section>
+
+      {/* Student Quick-Stats Widget for Logged-In Students */}
+      <StudentQuickStats
+        onSelectProgramForAi={onSelectProgramForAi}
+        onOpenInquiry={onOpenInquiry}
+        setActiveTab={setActiveTab}
+      />
 
       {/* Auto-Playing Quick Exam Tips Carousel */}
       <QuickExamTipsCarousel
