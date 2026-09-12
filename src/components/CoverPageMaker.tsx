@@ -23,104 +23,136 @@ export const CoverPageMaker: React.FC = () => {
     setFormData(prev => ({ ...prev, [field]: value }));
   };
 
-  const handlePrint = () => {
-    const printWindow = window.open('', '_blank');
-    if (!printWindow) return;
-
-    printWindow.document.write(`
-      <!DOCTYPE html>
-      <html>
-        <head>
-          <title>AIOU Assignment Cover Page - ${formData.courseCode}</title>
-          <style>
-            @page { size: A4; margin: 15mm; }
-            body { font-family: 'Times New Roman', serif; color: #000; padding: 20px; box-sizing: border-box; }
-            .border-box { border: 4px double #064e3b; padding: 25px; min-height: 90vh; position: relative; }
-            .header { text-align: center; border-bottom: 2px solid #064e3b; padding-bottom: 15px; margin-bottom: 25px; }
-            .header h1 { font-size: 24px; margin: 0; text-transform: uppercase; color: #064e3b; letter-spacing: 1px; }
-            .header h2 { font-size: 18px; margin: 5px 0 0; color: #1e293b; font-weight: normal; }
-            .header p { font-size: 14px; margin: 5px 0 0; font-style: italic; color: #475569; }
-            .title-badge { text-align: center; margin: 20px 0; }
-            .title-badge span { background: #064e3b; color: #fff; padding: 8px 25px; font-size: 18px; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; }
-            .table { width: 100%; border-collapse: collapse; margin-top: 20px; }
-            .table td { padding: 10px 12px; border: 1px solid #064e3b; font-size: 15px; }
-            .table td.label { font-weight: bold; background: #f0fdf4; width: 35%; color: #064e3b; }
-            .footer-note { margin-top: 40px; border-top: 1px solid #cbd5e1; pt: 15px; text-align: center; font-size: 12px; color: #64748b; }
-            .watermark { position: absolute; bottom: 30px; right: 30px; font-size: 11px; color: #94a3b8; font-family: sans-serif; }
-          </style>
-        </head>
-        <body>
-          <div class="border-box">
-            <div class="header">
-              <h1>Allama Iqbal Open University, Islamabad</h1>
-              <h2>Assignment Submission Declaration Sheet</h2>
-              <p>Prepared via Educare Help Desk (Helpline: ${HELPDESK_PHONE})</p>
-            </div>
-
-            <div class="title-badge">
-              <span>${formData.assignmentNumber.toUpperCase()}</span>
-            </div>
-
-            <table class="table">
-              <tr>
-                <td class="label">Student Full Name:</td>
-                <td><strong>${formData.studentName}</strong></td>
-              </tr>
-              <tr>
-                <td class="label">Roll Number:</td>
-                <td><strong>${formData.rollNumber}</strong></td>
-              </tr>
-              <tr>
-                <td class="label">Registration Number:</td>
-                <td><strong>${formData.registrationNumber}</strong></td>
-              </tr>
-              <tr>
-                <td class="label">Academic Program:</td>
-                <td>${formData.program}</td>
-              </tr>
-              <tr>
-                <td class="label">Course Code & Title:</td>
-                <td><strong>Code ${formData.courseCode}:</strong> ${formData.courseTitle}</td>
-              </tr>
-              <tr>
-                <td class="label">Semester / Session:</td>
-                <td>${formData.semester}</td>
-              </tr>
-              <tr>
-                <td class="label">Tutor Name:</td>
-                <td>${formData.tutorName}</td>
-              </tr>
-              <tr>
-                <td class="label">Tutor Address / LMS Details:</td>
-                <td>${formData.tutorAddress}</td>
-              </tr>
-              <tr>
-                <td class="label">Submission Date:</td>
-                <td>${formData.submissionDate}</td>
-              </tr>
-              <tr>
-                <td class="label">Student Phone Number:</td>
-                <td>${formData.studentPhone}</td>
-              </tr>
-            </table>
-
-            <div style="margin-top: 50px; display: flex; justify-content: space-between; font-size: 14px;">
-              <div>______________________<br/>Student Signature</div>
-              <div>______________________<br/>Tutor Signature & Stamp</div>
-            </div>
-
-            <div class="footer-note">
-              This cover page meets Allama Iqbal Open University assignment submission guidelines.<br/>
-              Educare Help Desk • Student Counseling & Solved Assignment Support • 03451291610
-            </div>
-            <div class="watermark">Educare Desk 03451291610</div>
+  const generatePrintHtml = () => `
+    <!DOCTYPE html>
+    <html>
+      <head>
+        <title>AIOU Assignment Cover Page - ${formData.courseCode}</title>
+        <style>
+          @page { size: A4; margin: 15mm; }
+          body { font-family: 'Times New Roman', serif; color: #000; padding: 20px; box-sizing: border-box; }
+          .border-box { border: 4px double #064e3b; padding: 25px; min-height: 90vh; position: relative; }
+          .header { text-align: center; border-bottom: 2px solid #064e3b; padding-bottom: 15px; margin-bottom: 25px; }
+          .header h1 { font-size: 24px; margin: 0; text-transform: uppercase; color: #064e3b; letter-spacing: 1px; }
+          .header h2 { font-size: 18px; margin: 5px 0 0; color: #1e293b; font-weight: normal; }
+          .header p { font-size: 14px; margin: 5px 0 0; font-style: italic; color: #475569; }
+          .title-badge { text-align: center; margin: 20px 0; }
+          .title-badge span { background: #064e3b; color: #fff; padding: 8px 25px; font-size: 18px; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; }
+          .table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+          .table td { padding: 10px 12px; border: 1px solid #064e3b; font-size: 15px; }
+          .table td.label { font-weight: bold; background: #f0fdf4; width: 35%; color: #064e3b; }
+          .footer-note { margin-top: 40px; border-top: 1px solid #cbd5e1; pt: 15px; text-align: center; font-size: 12px; color: #64748b; }
+          .watermark { position: absolute; bottom: 30px; right: 30px; font-size: 11px; color: #94a3b8; font-family: sans-serif; }
+        </style>
+      </head>
+      <body>
+        <div class="border-box">
+          <div class="header">
+            <h1>Allama Iqbal Open University, Islamabad</h1>
+            <h2>Assignment Submission Declaration Sheet</h2>
+            <p>Prepared via Educare Help Desk (Helpline: ${HELPDESK_PHONE})</p>
           </div>
-        </body>
-      </html>
-    `);
 
-    printWindow.document.close();
-    printWindow.print();
+          <div class="title-badge">
+            <span>${formData.assignmentNumber.toUpperCase()}</span>
+          </div>
+
+          <table class="table">
+            <tr>
+              <td class="label">Student Full Name:</td>
+              <td><strong>${formData.studentName}</strong></td>
+            </tr>
+            <tr>
+              <td class="label">Roll Number:</td>
+              <td><strong>${formData.rollNumber}</strong></td>
+            </tr>
+            <tr>
+              <td class="label">Registration Number:</td>
+              <td><strong>${formData.registrationNumber}</strong></td>
+            </tr>
+            <tr>
+              <td class="label">Academic Program:</td>
+              <td>${formData.program}</td>
+            </tr>
+            <tr>
+              <td class="label">Course Code & Title:</td>
+              <td><strong>Code ${formData.courseCode}:</strong> ${formData.courseTitle}</td>
+            </tr>
+            <tr>
+              <td class="label">Semester / Session:</td>
+              <td>${formData.semester}</td>
+            </tr>
+            <tr>
+              <td class="label">Tutor Name:</td>
+              <td>${formData.tutorName}</td>
+            </tr>
+            <tr>
+              <td class="label">Tutor Address / LMS Details:</td>
+              <td>${formData.tutorAddress}</td>
+            </tr>
+            <tr>
+              <td class="label">Submission Date:</td>
+              <td>${formData.submissionDate}</td>
+            </tr>
+            <tr>
+              <td class="label">Student Phone Number:</td>
+              <td>${formData.studentPhone}</td>
+            </tr>
+          </table>
+
+          <div style="margin-top: 50px; display: flex; justify-content: space-between; font-size: 14px;">
+            <div>______________________<br/>Student Signature</div>
+            <div>______________________<br/>Tutor Signature & Stamp</div>
+          </div>
+
+          <div class="footer-note">
+            This cover page meets Allama Iqbal Open University assignment submission guidelines.<br/>
+            Educare Help Desk • Student Counseling & Solved Assignment Support • 03451291610
+          </div>
+          <div class="watermark">Educare Desk 03451291610</div>
+        </div>
+      </body>
+    </html>
+  `;
+
+  const handlePrint = () => {
+    try {
+      const printWindow = window.open('', '_blank');
+      if (!printWindow) {
+        // Fallback for Windows 7 popup blockers
+        const iframe = document.createElement('iframe');
+        iframe.style.position = 'fixed';
+        iframe.style.right = '0';
+        iframe.style.bottom = '0';
+        iframe.style.width = '0';
+        iframe.style.height = '0';
+        iframe.style.border = '0';
+        document.body.appendChild(iframe);
+        const doc = iframe.contentWindow?.document || iframe.contentDocument;
+        if (doc) {
+          doc.open();
+          doc.write(generatePrintHtml());
+          doc.close();
+          iframe.contentWindow?.focus();
+          iframe.contentWindow?.print();
+          setTimeout(() => {
+            if (document.body.contains(iframe)) {
+              document.body.removeChild(iframe);
+            }
+          }, 3000);
+        } else {
+          window.print();
+        }
+        return;
+      }
+
+      printWindow.document.write(generatePrintHtml());
+      printWindow.document.close();
+      printWindow.focus();
+      printWindow.print();
+    } catch {
+      window.print();
+    }
   };
 
   return (

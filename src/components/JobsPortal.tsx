@@ -1,7 +1,12 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { PAKISTAN_JOB_UPDATES, PUNJAB_GOV_NOTIFICATIONS, JobItem, PunjabGovNotification } from '../data/jobData';
+import { CM_PUNJAB_SCHEMES, STUDENT_SCHOLARSHIPS } from '../data/schemesAndScholarshipsData';
+import { PEF_PROGRAMS } from '../data/pefData';
 import { HELPDESK_PHONE, HELPDESK_WHATSAPP } from '../data/aiouData';
 import { ShareButton } from './ShareButton';
+import { CmPunjabSchemesView } from './CmPunjabSchemesView';
+import { StudentScholarshipsView } from './StudentScholarshipsView';
+import { PefPortalView } from './PefPortalView';
 import {
   Briefcase,
   Search,
@@ -31,11 +36,22 @@ import {
   Info,
   Layers,
   ChevronDown,
-  ChevronUp
+  ChevronUp,
+  School
 } from 'lucide-react';
 
-export const JobsPortal: React.FC = () => {
-  const [activeMainTab, setActiveMainTab] = useState<'jobs' | 'notifications'>('jobs');
+export interface JobsPortalProps {
+  initialTab?: 'jobs' | 'schemes' | 'scholarships' | 'pef' | 'notifications';
+}
+
+export const JobsPortal: React.FC<JobsPortalProps> = ({ initialTab = 'jobs' }) => {
+  const [activeMainTab, setActiveMainTab] = useState<'jobs' | 'schemes' | 'scholarships' | 'pef' | 'notifications'>(initialTab);
+
+  useEffect(() => {
+    if (initialTab) {
+      setActiveMainTab(initialTab);
+    }
+  }, [initialTab]);
   
   // Jobs Filter State
   const [selectedJobCategory, setSelectedJobCategory] = useState<string>('All');
@@ -55,6 +71,7 @@ export const JobsPortal: React.FC = () => {
     'Educators / Teaching',
     'Punjab Police & Rescue',
     'Punjab Health & IT',
+    'Punjab Education Foundation (PEF)',
     'Federal (FPSC)',
     'General Gov',
     'AIOU Tutor'
@@ -81,9 +98,13 @@ export const JobsPortal: React.FC = () => {
   ];
 
   const quickJobSearches = [
+    'PEF (QAO/MEO)',
+    'Educators BS-14',
+    'Police (10k Posts)',
+    'Charge Nurses BS-16',
+    'Special Education JSET',
     'PLRA (SCO BS-14)',
     'FIA BS-14/16/17',
-    'Educators BS-14',
     'State Bank (SBOTS)',
     'WAPDA & DISCOs',
     'Junior Clerk',
@@ -223,29 +244,65 @@ export const JobsPortal: React.FC = () => {
         </div>
 
         {/* Main Section Navigation Switcher */}
-        <div className="pt-4 border-t border-emerald-800/80 flex flex-wrap gap-3">
+        <div className="pt-4 border-t border-emerald-800/80 flex flex-wrap gap-2.5">
           <button
             onClick={() => setActiveMainTab('jobs')}
-            className={`px-5 py-3 rounded-2xl font-extrabold text-xs sm:text-sm flex items-center gap-2.5 transition-all border ${
+            className={`px-4 py-2.5 rounded-2xl font-extrabold text-xs sm:text-sm flex items-center gap-2 transition-all border ${
               activeMainTab === 'jobs'
                 ? 'bg-amber-400 text-slate-950 border-amber-300 shadow-md ring-2 ring-amber-300/40'
                 : 'bg-emerald-900/60 hover:bg-emerald-800 text-white border-emerald-700/80'
             }`}
           >
             <Briefcase className="w-4 h-4" />
-            <span>Active Punjab & Pakistan Jobs ({PAKISTAN_JOB_UPDATES.length})</span>
+            <span>Jobs ({PAKISTAN_JOB_UPDATES.length})</span>
+          </button>
+
+          <button
+            onClick={() => setActiveMainTab('schemes')}
+            className={`px-4 py-2.5 rounded-2xl font-extrabold text-xs sm:text-sm flex items-center gap-2 transition-all border ${
+              activeMainTab === 'schemes'
+                ? 'bg-amber-400 text-slate-950 border-amber-300 shadow-md ring-2 ring-amber-300/40'
+                : 'bg-emerald-900/60 hover:bg-emerald-800 text-white border-emerald-700/80'
+            }`}
+          >
+            <Sparkles className="w-4 h-4 text-amber-300" />
+            <span>CM Punjab Schemes ({CM_PUNJAB_SCHEMES.length})</span>
+          </button>
+
+          <button
+            onClick={() => setActiveMainTab('scholarships')}
+            className={`px-4 py-2.5 rounded-2xl font-extrabold text-xs sm:text-sm flex items-center gap-2 transition-all border ${
+              activeMainTab === 'scholarships'
+                ? 'bg-amber-400 text-slate-950 border-amber-300 shadow-md ring-2 ring-amber-300/40'
+                : 'bg-emerald-900/60 hover:bg-emerald-800 text-white border-emerald-700/80'
+            }`}
+          >
+            <GraduationCap className="w-4 h-4 text-emerald-300" />
+            <span>Scholarships ({STUDENT_SCHOLARSHIPS.length})</span>
+          </button>
+
+          <button
+            onClick={() => setActiveMainTab('pef')}
+            className={`px-4 py-2.5 rounded-2xl font-extrabold text-xs sm:text-sm flex items-center gap-2 transition-all border ${
+              activeMainTab === 'pef'
+                ? 'bg-amber-400 text-slate-950 border-amber-300 shadow-md ring-2 ring-amber-300/40'
+                : 'bg-emerald-900/60 hover:bg-emerald-800 text-white border-emerald-700/80'
+            }`}
+          >
+            <School className="w-4 h-4 text-teal-300" />
+            <span>PEF Updates ({PEF_PROGRAMS.length})</span>
           </button>
 
           <button
             onClick={() => setActiveMainTab('notifications')}
-            className={`px-5 py-3 rounded-2xl font-extrabold text-xs sm:text-sm flex items-center gap-2.5 transition-all border ${
+            className={`px-4 py-2.5 rounded-2xl font-extrabold text-xs sm:text-sm flex items-center gap-2 transition-all border ${
               activeMainTab === 'notifications'
                 ? 'bg-amber-400 text-slate-950 border-amber-300 shadow-md ring-2 ring-amber-300/40'
                 : 'bg-emerald-900/60 hover:bg-emerald-800 text-white border-emerald-700/80'
             }`}
           >
             <FileCheck className="w-4 h-4" />
-            <span>Punjab Govt Official Notifications ({PUNJAB_GOV_NOTIFICATIONS.length})</span>
+            <span>Govt Notifications ({PUNJAB_GOV_NOTIFICATIONS.length})</span>
           </button>
         </div>
       </div>
@@ -468,7 +525,28 @@ export const JobsPortal: React.FC = () => {
         </div>
       )}
 
-      {/* VIEW 2: PUNJAB GOVERNMENT OFFICIAL NOTIFICATIONS */}
+      {/* VIEW 2: CM PUNJAB STUDENT SCHEMES */}
+      {activeMainTab === 'schemes' && (
+        <div className="animate-fadeIn">
+          <CmPunjabSchemesView />
+        </div>
+      )}
+
+      {/* VIEW 3: STUDENT SCHOLARSHIPS */}
+      {activeMainTab === 'scholarships' && (
+        <div className="animate-fadeIn">
+          <StudentScholarshipsView />
+        </div>
+      )}
+
+      {/* VIEW 4: PUNJAB EDUCATION FOUNDATION (PEF) */}
+      {activeMainTab === 'pef' && (
+        <div className="animate-fadeIn">
+          <PefPortalView />
+        </div>
+      )}
+
+      {/* VIEW 5: PUNJAB GOVERNMENT OFFICIAL NOTIFICATIONS */}
       {activeMainTab === 'notifications' && (
         <div className="space-y-6 animate-fadeIn">
           {/* Notifications Search & Filter Bar */}

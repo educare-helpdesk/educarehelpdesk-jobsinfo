@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Phone, MessageCircle, GraduationCap, Sparkles, BookOpen, Calculator, FileText, Globe, HelpCircle, Briefcase, BookMarked, Clock, Building, Newspaper, Bell, CalendarDays, FileDown, Menu, X, Search, ChevronRight } from 'lucide-react';
+import React, { useState, useRef } from 'react';
+import { Phone, MessageCircle, GraduationCap, Sparkles, BookOpen, Calculator, FileText, Globe, HelpCircle, Briefcase, BookMarked, Clock, Building, Newspaper, Bell, CalendarDays, FileDown, Menu, X, Search, ChevronRight, ChevronLeft, Printer } from 'lucide-react';
 import { HELPDESK_PHONE, HELPDESK_WHATSAPP } from '../data/aiouData';
 import { NewsTicker } from './NewsTicker';
 import { ShareButton } from './ShareButton';
@@ -21,11 +21,25 @@ export const Header: React.FC<HeaderProps> = ({
 }) => {
   const [localMenuOpen, setLocalMenuOpen] = useState(false);
   const [drawerSearch, setDrawerSearch] = useState('');
+  const tabsContainerRef = useRef<HTMLDivElement>(null);
 
   const isMenuOpen = propMenuOpen !== undefined ? propMenuOpen : localMenuOpen;
   const setMenuOpen = propSetMenuOpen || setLocalMenuOpen;
 
   const whatsappUrl = `https://wa.me/${HELPDESK_WHATSAPP}?text=${encodeURIComponent("Hello Educare Help Desk, I need assistance regarding BISE Sargodha / AIOU programs.")}`;
+
+  const scrollTabs = (direction: 'left' | 'right') => {
+    if (tabsContainerRef.current) {
+      tabsContainerRef.current.scrollBy({
+        left: direction === 'left' ? -280 : 280,
+        behavior: 'smooth'
+      });
+    }
+  };
+
+  const handlePrintPage = () => {
+    window.print();
+  };
 
   const navItems = [
     { id: 'programs', label: 'AIOU Programs (Matric-PhD)', icon: GraduationCap, color: 'text-emerald-700', activeBg: 'bg-emerald-800', badge: 'All Levels', badgeColor: 'bg-emerald-100 text-emerald-900 border-emerald-300', category: 'Academics & Deadlines', desc: 'Browse degree catalogs, entry criteria & semester courses' },
@@ -33,7 +47,7 @@ export const Header: React.FC<HeaderProps> = ({
     { id: 'academic-calendar', label: 'Academic Calendar', icon: CalendarDays, color: 'text-teal-700', activeBg: 'bg-teal-900', badge: '2026 Deadlines', badgeColor: 'bg-amber-100 text-amber-950 border-amber-300 font-black', category: 'Academics & Deadlines', desc: 'Official AIOU timeline for admissions, exams & results' },
     { id: 'academic-updates', label: 'Academic Updates', icon: Newspaper, color: 'text-rose-700', activeBg: 'bg-rose-800', badge: 'Live Grounded', badgeColor: 'bg-rose-100 text-rose-900 border-rose-300', category: 'Academics & Deadlines', desc: 'Real-time verified university alerts and notifications' },
     { id: 'bise-sargodha', label: 'BISE Sargodha (Matric/Inter)', icon: Building, color: 'text-blue-700', activeBg: 'bg-blue-800', badge: 'Results & Admission', badgeColor: 'bg-blue-100 text-blue-900 border-blue-300', category: 'Academics & Deadlines', desc: 'Sargodha Board 9th, 10th, 11th & 12th portal' },
-    { id: 'jobs', label: 'Punjab Jobs & Govt Notifications', icon: Briefcase, color: 'text-amber-700', activeBg: 'bg-amber-500 text-slate-950', badge: 'Jobs & Alerts 2026', badgeColor: 'bg-rose-500 text-white border-rose-600 animate-pulse', category: 'Academics & Deadlines', desc: 'Latest government and education job openings' },
+    { id: 'jobs', label: 'Jobs, CM Schemes, Scholarships & PEF', icon: Briefcase, color: 'text-amber-700', activeBg: 'bg-amber-500 text-slate-950', badge: 'Jobs • PEF • CM Schemes', badgeColor: 'bg-rose-500 text-white border-rose-600 animate-pulse font-black', category: 'Academics & Deadlines', desc: 'PPSC & Police Jobs, CM Punjab Schemes (Honhaar, Laptops, E-Bikes), Scholarships & PEF Updates' },
     { id: 'ai-solver', label: 'AI Assignment Solver', icon: Sparkles, color: 'text-purple-700', activeBg: 'bg-purple-800', badge: 'AI Powered', badgeColor: 'bg-purple-100 text-purple-900 border-purple-300', category: 'Solvers & Calculators', desc: 'Instant AI solutions formatted for AIOU assignment standards' },
     { id: 'solved-assignments', label: 'Solved Assignments', icon: BookOpen, color: 'text-teal-700', activeBg: 'bg-teal-800', badge: 'PDFs & Scans', badgeColor: 'bg-teal-100 text-teal-900 border-teal-300', category: 'Solvers & Calculators', desc: 'Pre-solved assignments catalog & handwritten guides' },
     { id: 'exam-countdown', label: 'Exam Countdown Timer', icon: Clock, color: 'text-rose-700', activeBg: 'bg-rose-800', badge: 'Exams 2026', badgeColor: 'bg-amber-100 text-amber-900 border-amber-300', category: 'Solvers & Calculators', desc: 'Live countdowns & 30-day exam preparation planner' },
@@ -191,6 +205,16 @@ export const Header: React.FC<HeaderProps> = ({
           </a>
 
           <button
+            onClick={handlePrintPage}
+            className="hidden lg:flex items-center gap-1.5 px-3 py-2 rounded-xl transition-all shadow-xs border bg-white hover:bg-slate-50 text-slate-800 border-slate-300 text-xs font-bold"
+            title="Print current page or Save as PDF (Ctrl + P)"
+            aria-label="Print page"
+          >
+            <Printer className="w-4 h-4 text-slate-700" />
+            <span>Print [Ctrl+P]</span>
+          </button>
+
+          <button
             onClick={onOpenInquiry}
             className="bg-amber-500 hover:bg-amber-400 text-slate-950 font-black px-4 py-2.5 rounded-xl transition-all shadow-sm text-xs sm:text-sm border border-amber-600"
           >
@@ -199,9 +223,27 @@ export const Header: React.FC<HeaderProps> = ({
         </div>
       </div>
 
-      {/* Navigation Tabs Bar with Touch-Friendly Horizontal Scroll */}
-      <div className="bg-slate-100 border-t-2 border-slate-200 px-3 overflow-x-auto scrollbar-none touch-pan-x">
-        <div className="max-w-7xl mx-auto flex items-center gap-1.5 sm:gap-2 py-2 min-w-max">
+      {/* Navigation Tabs Bar with Desktop Mouse Wheel & Touch-Friendly Horizontal Scroll */}
+      <div className="relative bg-slate-100 border-t-2 border-slate-200 px-2 sm:px-3">
+        {/* Desktop Left Scroll Button for Windows 7 Mouse Users */}
+        <button
+          onClick={() => scrollTabs('left')}
+          className="hidden md:flex absolute left-1 top-1/2 -translate-y-1/2 z-10 w-7 h-7 bg-white/95 hover:bg-white text-slate-700 hover:text-slate-950 rounded-full shadow-md border border-slate-300 items-center justify-center transition-all hover:scale-110 active:scale-95"
+          title="Scroll Left (Mouse / Keyboard)"
+          aria-label="Scroll services list left"
+        >
+          <ChevronLeft className="w-4 h-4" />
+        </button>
+
+        <div
+          ref={tabsContainerRef}
+          onWheel={(e) => {
+            if (e.deltaY !== 0) {
+              e.currentTarget.scrollLeft += e.deltaY;
+            }
+          }}
+          className="max-w-7xl mx-auto flex items-center gap-1.5 sm:gap-2 py-2 overflow-x-auto scrollbar-none touch-pan-x scroll-smooth md:px-7"
+        >
           {navItems.map((item) => {
             const Icon = item.icon;
             const isActive = activeTab === item.id;
@@ -228,6 +270,16 @@ export const Header: React.FC<HeaderProps> = ({
             );
           })}
         </div>
+
+        {/* Desktop Right Scroll Button for Windows 7 Mouse Users */}
+        <button
+          onClick={() => scrollTabs('right')}
+          className="hidden md:flex absolute right-1 top-1/2 -translate-y-1/2 z-10 w-7 h-7 bg-white/95 hover:bg-white text-slate-700 hover:text-slate-950 rounded-full shadow-md border border-slate-300 items-center justify-center transition-all hover:scale-110 active:scale-95"
+          title="Scroll Right (Mouse / Keyboard)"
+          aria-label="Scroll services list right"
+        >
+          <ChevronRight className="w-4 h-4" />
+        </button>
       </div>
 
       {/* Mobile Drawer Overlay */}

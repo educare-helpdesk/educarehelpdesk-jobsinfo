@@ -1,6 +1,6 @@
 {
   "name": "Educare Help Desk - AIOU Student Portal",
-  "description": "Comprehensive student support desk with interactive Quick Exam Tips carousel, official downloadable forms & NOC desk (Degree, Admission, Job Application, Bank Challans, Birth, Affidavits, Experience Letters), master academic calendar & deadline timelines, search-grounded academic updates & announcements, AI study resources, exam preparation tips, solved assignments hub, fee estimator, BISE Sargodha board services, and Punjab job updates. Helpline: 03451291610.",
+  "description": "Comprehensive student support desk with CM Punjab youth schemes (Honhaar scholarships, laptops, e-bikes), student scholarships (PEEF, HEC, Mora Zakat), Punjab Education Foundation (PEF QAT guidelines & subsidies), new 2026 admissions, jobs (PPSC, Police, Health, Educators), official downloadable forms, academic calendar, solved assignments hub, fee estimator, and BISE Sargodha services. Helpline: 03451291610.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }

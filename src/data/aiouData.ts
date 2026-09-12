@@ -6,6 +6,50 @@ export const HELPDESK_NAME = 'Educare Help Desk';
 
 export const AIOU_NEWS_ALERTS: AiouNewsAlert[] = [
   {
+    id: 'news-cm-schemes-2026',
+    category: 'Admission',
+    tagText: 'CM PUNJAB SCHEMES 2026',
+    headline: 'CM Punjab New Student Schemes: 30,000+ Honhaar Scholarships, Free Laptops & E-Bikes',
+    detail: 'Chief Minister Maryam Nawaz Sharif youth initiatives are active: 100% tuition coverage under Honhaar Undergraduate Scholarship, free Core i7 laptops for board/university merit holders, and 0% markup E-Bikes. Apply now on the official portal.',
+    date: 'Active 2026',
+    isUrgent: true,
+    actionTab: 'schemes',
+    linkUrl: 'https://honhaarscholarship.punjabhec.gov.pk'
+  },
+  {
+    id: 'news-pef-updates-2026',
+    category: 'Deadline',
+    tagText: 'PEF UPDATES 2026',
+    headline: 'Punjab Education Foundation (PEF): QAT 2026 Guidelines, Subsidies & Officer Jobs',
+    detail: 'PEF announces Quality Assurance Test (QAT 2026) mandatory 67% passing threshold, enhanced monthly per-student subsidies (Primary PKR 1,000, Elementary PKR 1,200, Secondary PKR 1,600), and fresh recruitments for QAOs & MEOs.',
+    date: 'Active 2026',
+    isUrgent: true,
+    actionTab: 'pef',
+    linkUrl: 'https://pef.punjab.gov.pk'
+  },
+  {
+    id: 'news-scholarships-2026',
+    category: 'Admission',
+    tagText: 'STUDENT SCHOLARSHIPS 2026',
+    headline: 'Scholarships Announced for Students: PEEF, HEC Need-Based, Mora Zakat & AIOU SFSS',
+    detail: 'Comprehensive student scholarship programs are now open for Matric, Intermediate, BS (4-Year), and B.Ed students. Access complete eligibility criteria, monthly stipend details, and online application guidelines.',
+    date: 'Active 2026',
+    isUrgent: true,
+    actionTab: 'scholarships',
+    linkUrl: 'https://peef.org.pk'
+  },
+  {
+    id: 'news-adm-2026-new',
+    category: 'Admission',
+    tagText: 'NEW ADMISSIONS 2026',
+    headline: 'New Admissions 2026 Open: AIOU Phase I & II (BS, B.Ed, AD, Matric/FA) + BISE Sargodha',
+    detail: 'Allama Iqbal Open University Autumn/Spring admissions active nationwide for BS 4-Year, B.Ed (1.5, 2.5, 4 Years), Associate Degree, and Matric/FA. BISE Sargodha admissions also open for 9th/10th and 1st/2nd Year.',
+    date: 'Active 2026',
+    isUrgent: true,
+    actionTab: 'academic-calendar',
+    linkUrl: 'https://oas.aiou.edu.pk'
+  },
+  {
     id: 'news-bise-1',
     category: 'Admission',
     tagText: 'BISE SARGODHA 2026',

@@ -118,8 +118,18 @@ export default function App() {
           <BiseSargodhaPortal onOpenInquiry={() => handleOpenInquiry()} />
         )}
 
-        {activeTab === 'jobs' && (
-          <JobsPortal />
+        {(activeTab === 'jobs' || activeTab === 'schemes' || activeTab === 'scholarships' || activeTab === 'pef') && (
+          <JobsPortal
+            initialTab={
+              activeTab === 'schemes'
+                ? 'schemes'
+                : activeTab === 'scholarships'
+                ? 'scholarships'
+                : activeTab === 'pef'
+                ? 'pef'
+                : 'jobs'
+            }
+          />
         )}
 
         {activeTab === 'exam-countdown' && (
@@ -144,7 +154,7 @@ export default function App() {
       </main>
 
       {/* Floating Quick Action Widget - Placed safely above mobile bottom nav */}
-      <div className="fixed bottom-20 sm:bottom-6 right-3 sm:right-6 z-30 flex flex-col items-end gap-2 pointer-events-auto">
+      <div className="floating-actions fixed bottom-20 sm:bottom-6 right-3 sm:right-6 z-30 flex flex-col items-end gap-2 pointer-events-auto">
         <a
           href={whatsappUrl}
           target="_blank"

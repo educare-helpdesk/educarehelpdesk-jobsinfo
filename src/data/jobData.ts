@@ -3,7 +3,7 @@ export interface JobItem {
   title: string;
   department: string;
   region: 'Punjab' | 'Federal' | 'AIOU Special' | 'All Pakistan';
-  category: 'Punjab (PPSC)' | 'Educators / Teaching' | 'Punjab Police & Rescue' | 'Punjab Health & IT' | 'AIOU Tutor' | 'Federal (FPSC)' | 'General Gov';
+  category: 'Punjab (PPSC)' | 'Educators / Teaching' | 'Punjab Police & Rescue' | 'Punjab Health & IT' | 'AIOU Tutor' | 'Federal (FPSC)' | 'General Gov' | 'Punjab Education Foundation (PEF)';
   vacancies: string;
   payScale: string;
   qualification: string;
@@ -836,6 +836,198 @@ export const PAKISTAN_JOB_UPDATES: JobItem[] = [
       'Educational Degrees (Matric to Post-Graduation)',
       '1Link PSID Challan Receipt'
     ]
+  },
+  {
+    id: 'job-pef-qao',
+    title: 'Punjab Education Foundation (PEF) Quality Assurance Officers (QAO BS-17 Equivalent) & Monitoring Officers (MEO)',
+    department: 'Punjab Education Foundation (PEF), Government of the Punjab',
+    region: 'Punjab',
+    category: 'Punjab Education Foundation (PEF)',
+    vacancies: '180+ Posts (All Punjab Divisions: Lahore, Sargodha, Rawalpindi, Multan, Faisalabad, Bahawalpur, DG Khan)',
+    payScale: 'PKR 75,000 - 90,000 / month (Lump-sum Consolidated Pay + Field Allowances)',
+    qualification: 'Master / BS (4-Year / 16-Year Education) in Education, Statistics, Economics, English, Mathematics, or Natural Sciences',
+    ageLimit: '21 - 35 Years (General Age Relaxation Applicable)',
+    lastDate: 'Active PEF Recruitment Batch 2026',
+    isUrgent: true,
+    applyUrl: 'https://pef.punjab.gov.pk',
+    officialPortal: 'PEF Careers Portal (pef.punjab.gov.pk)',
+    description: 'Punjab Education Foundation (PEF) invites applications from energetic and result-oriented candidates for field inspection, school quality evaluation, and Quality Assurance Test (QAT) administration across partner schools in Punjab.',
+    criteriaList: [
+      'Minimum 16 Years of Education (BS / Master) from HEC recognized university with at least 2nd Division.',
+      'Strong command over school curricula, test administration, and statistical reporting.',
+      'Punjab domicile is mandatory; posting will be at respective divisional/district offices.',
+      'Valid motorcycle / car driving license and willingness to conduct frequent field school inspections.'
+    ],
+    howToApplySteps: [
+      'Visit pef.punjab.gov.pk/careers and register candidate account.',
+      'Select post: Quality Assurance Officer (QAO) or Monitoring & Evaluation Officer (MEO).',
+      'Upload scanned degrees, CNIC, and domicile certificate.',
+      'Submit form online and download computer-generated application slip.'
+    ],
+    requiredDocuments: [
+      'Attested copies of Matric, Inter, and BS/Master Degrees',
+      'CNIC & Punjab Domicile Certificate',
+      'Two recent passport size photographs'
+    ]
+  },
+  {
+    id: 'job-pef-specialists',
+    title: 'PEF Master Trainers & Subject Specialists (English, Mathematics, Science & Urdu)',
+    department: 'Directorate of Continuous Professional Development (CPD), Punjab Education Foundation',
+    region: 'Punjab',
+    category: 'Punjab Education Foundation (PEF)',
+    vacancies: '95+ Posts across Punjab Training Clusters',
+    payScale: 'PKR 70,000 - 85,000 / month',
+    qualification: 'Master / BS (4-Year) in English, Mathematics, Physics, Chemistry, Biology, Urdu or Education (B.Ed/M.Ed preferred)',
+    ageLimit: '22 - 40 Years',
+    lastDate: 'Active Phase 2026',
+    isUrgent: false,
+    applyUrl: 'https://pef.punjab.gov.pk',
+    officialPortal: 'Punjab Education Foundation (PEF)',
+    description: 'Provide pedagogical coaching, lesson delivery modeling, and interactive workshops to teachers of Foundation Assisted Schools (FAS) and Education Voucher Scheme (EVS) institutions across Punjab.',
+    criteriaList: [
+      'Master / BS in the relevant subject with strong English communication and presentation skills.',
+      'Prior experience in teacher training, curriculum development, or school teaching.',
+      'Proficiency in modern IT tools, multimedia presentations, and educational software.'
+    ],
+    howToApplySteps: [
+      'Apply online on PEF Recruitment Portal (pef.punjab.gov.pk).',
+      'Shortlisted candidates will appear in subject written test and demo presentation.',
+      'Final selection based on academic merit, subject test score, and interview.'
+    ],
+    requiredDocuments: [
+      'Educational Degrees & Transcripts',
+      'Teaching / Training Experience Letters',
+      'CNIC & Punjab Domicile'
+    ]
+  },
+  {
+    id: 'job-police-constables',
+    title: 'Punjab Police Constables, Lady Constables, Driver Constables & Traffic Assistants (10,000+ Posts)',
+    department: 'Punjab Police Department, Government of Punjab',
+    region: 'Punjab',
+    category: 'Punjab Police & Rescue',
+    vacancies: '10,250+ Posts across all 36 Districts of Punjab',
+    payScale: 'BS-07 (With Police Special Risk Allowance & Free Uniform/Medical)',
+    qualification: 'Matriculation (SSC) with minimum 50% Marks from any recognized BISE Board',
+    ageLimit: '18 - 22 Years (General Police Service Cadre) | Age relaxation as per Punjab Govt notification',
+    lastDate: 'Active Recruitment Phase 2026',
+    isUrgent: true,
+    applyUrl: 'https://punjabpolice.gov.pk',
+    officialPortal: 'Punjab Police Official Portal',
+    description: 'Mega Punjab Police recruitment drive for Constables, Lady Constables, Driver Constables, and Traffic Assistants in District Police, Motor Transport (MT) Wing, Special Protection Unit (SPU), and Punjab Highway Patrol (PHP).',
+    criteriaList: [
+      'Height (Male): Minimum 5 feet 7 inches (5\' 7").',
+      'Height (Female): Minimum 5 feet 2 inches (5\' 2").',
+      'Chest (Male): Minimum 33 inches with 34.5 inches expansion.',
+      'Physical Running Test: Male 1.6 KM in 7 minutes; Female 1.6 KM in 10 minutes.',
+      'Domicile of the respective Punjab district is compulsory.'
+    ],
+    howToApplySteps: [
+      'Download application form from punjabpolice.gov.pk or obtain from District Police Lines.',
+      'Submit filled application along with PKR 200 processing fee at District Police Headquarters (DPO Office).',
+      'Attend physical measurement and running endurance test as per roll number slip.'
+    ],
+    requiredDocuments: [
+      'Matric Result Card & Sanad copies (Attested)',
+      'Character Certificate from School / College Head',
+      'Original CNIC and 8 Passport size photographs',
+      'Punjab Domicile Certificate'
+    ]
+  },
+  {
+    id: 'job-health-nurses',
+    title: 'Punjab Health 3,000+ Charge Nurses (BS-16) & Medical Officers (BS-17) - P&SHD',
+    department: 'Primary & Secondary Healthcare Department (P&SHD), Punjab / PPSC',
+    region: 'Punjab',
+    category: 'Punjab Health & IT',
+    vacancies: '3,200+ Posts in DHQ & THQ Hospitals across Punjab',
+    payScale: 'BS-16 (Charge Nurse) | BS-17 (Medical Officer / Women Medical Officer)',
+    qualification: 'B.Sc Nursing (4-Year) / Post-RN B.Sc Nursing + PNC Registration; MBBS + PMDC for Doctors',
+    ageLimit: '21 - 35 Years (Up to 43 Years for Females with 8 Years General Age Relaxation)',
+    lastDate: 'Active PPSC / P&SHD Recruitment',
+    isUrgent: true,
+    applyUrl: 'https://ppsc.gop.pk',
+    officialPortal: 'Punjab Public Service Commission (PPSC)',
+    description: 'PPSC and Primary & Secondary Healthcare Department recruit Charge Nurses (BS-16) and Medical Officers / Women Medical Officers (BS-17) for District Headquarter (DHQ) and Tehsil Headquarter (THQ) hospitals across Punjab.',
+    criteriaList: [
+      'Registered with Pakistan Nursing & Midwifery Council (PN&MC) or PMDC.',
+      'Valid Punjab Domicile.',
+      'PPSC Written Test: 80% Nursing / Medical syllabus + 20% General Knowledge.'
+    ],
+    howToApplySteps: [
+      'Apply online on PPSC Portal (ppsc.gop.pk).',
+      'Pay fee through 1Link PSID.',
+      'Download roll number slip for MCQ screening test.'
+    ],
+    requiredDocuments: [
+      'Valid PNC / PMDC Registration Card',
+      'B.Sc Nursing / MBBS Degree & Transcripts',
+      'Punjab Domicile & CNIC'
+    ]
+  },
+  {
+    id: 'job-special-education',
+    title: 'Punjab Special Education Junior Special Education Teachers (JSET BS-16) & Educators',
+    department: 'Special Education Department, Government of Punjab / PPSC',
+    region: 'Punjab',
+    category: 'Educators / Teaching',
+    vacancies: '420+ Posts (Hearing Impaired, Visually Impaired, Mentally Challenged & Physical Disability)',
+    payScale: 'BS-16 (Regular Service with Special Incentive Allowance)',
+    qualification: 'BS (4-Year) / Master in Special Education (Deaf / Blind / MCC / Physical) or Psychology + B.Ed Special Education',
+    ageLimit: '21 - 35 Years (Male) | 21 - 38 Years (Female)',
+    lastDate: 'Active PPSC Schedule 2026',
+    isUrgent: false,
+    applyUrl: 'https://ppsc.gop.pk',
+    officialPortal: 'PPSC Official Portal (ppsc.gop.pk)',
+    description: 'Recruitment of Junior Special Education Teachers (JSET BS-16) in government special education centres and schools across all 36 Punjab districts.',
+    criteriaList: [
+      'Degree in Special Education or relevant behavioral field from HEC recognized university.',
+      'Punjab Domicile is mandatory.',
+      '10-year disability age relaxation applies for disabled applicants under the 3% quota.'
+    ],
+    howToApplySteps: [
+      'Visit ppsc.gop.pk and submit online form under Special Education Department.',
+      'Deposit fee via 1Link PSID.',
+      'Download PPSC Syllabus and attend written exam.'
+    ],
+    requiredDocuments: [
+      'BS / Master Degree in Special Education',
+      'Punjab Domicile & CNIC',
+      'PPSC Paid Challan Receipt'
+    ]
+  },
+  {
+    id: 'job-aiou-tutors-2026',
+    title: 'AIOU Tutor & Resource Person E-Registration (Semester Autumn 2026 & Spring 2027)',
+    department: 'Allama Iqbal Open University (AIOU), Islamabad',
+    region: 'AIOU Special',
+    category: 'AIOU Tutor',
+    vacancies: 'Nationwide Tutor Allocation (Matric, FA, BA, BS, B.Ed, M.Phil & Ph.D)',
+    payScale: 'Honorarium & Remuneration per student script / Aaghi LMS online workshop session',
+    qualification: 'Master / BS (4-Year) / M.Phil / Ph.D in relevant subject (Minimum 2nd Division)',
+    ageLimit: '21 - 60 Years (Govt Teachers, Private Lecturers & Unemployed Postgraduates)',
+    lastDate: 'Active E-Registration Window',
+    isUrgent: true,
+    applyUrl: 'https://tutor.aiou.edu.pk',
+    officialPortal: 'AIOU Tutor E-Registration Portal (tutor.aiou.edu.pk)',
+    description: 'AIOU invites applications from qualified in-service government educators, college lecturers, university faculty, and private postgraduates for enrollment as Course Tutors and Resource Persons for LMS online workshops.',
+    criteriaList: [
+      'For Matric / FA: Minimum Master / BS in relevant school subject.',
+      'For BA / BS / B.Ed: Minimum Master / M.Phil with teaching credentials.',
+      'For M.Phil / Ph.D workshops: Ph.D or M.Phil with research publication record.',
+      'Processing fee PKR 1,000 payable via 1Link, Easypaisa, JazzCash, or bank challan.'
+    ],
+    howToApplySteps: [
+      'Visit tutor.aiou.edu.pk and register using CNIC.',
+      'Input academic profile, teaching experience, and select preferred tehsils and course codes.',
+      'Pay online processing fee and submit computerized application.'
+    ],
+    requiredDocuments: [
+      'All Academic Degrees & Transcripts',
+      'Teaching Experience Certificate (NOC for Govt Servants)',
+      'CNIC and Fee Payment Receipt'
+    ]
   }
 ];
 
@@ -1057,6 +1249,64 @@ export const PUNJAB_GOV_NOTIFICATIONS: PunjabGovNotification[] = [
     applicableTo: 'Punjab Residents, Consumers, and Enrolled College/University Students',
     verified: true,
     tags: ['Solar Scheme', 'E-Bikes', 'CM Punjab', 'Student Relief']
+  },
+  {
+    id: 'notif-11',
+    title: 'Notification on CM Punjab Honhaar Scholarship 100% Tuition Fee Reimbursement Directives',
+    notificationNumber: 'No. HED(Univ)3-18/2026',
+    department: 'Higher Education Department (HED), Government of Punjab',
+    category: 'Student Schemes & Scholarships',
+    dateIssued: 'September 2026',
+    summary: 'Official notification directing all Vice Chancellors of 68 Public Sector Universities and Principals of 131 Graduate Colleges to issue zero-balance fee vouchers for all Honhaar Scholarship recipients.',
+    keyDirectives: [
+      'Universities must not demand or deduct tuition fee from students selected under the CM Honhaar Scholarship.',
+      'Funds are disbursed directly into institutional treasury accounts via Punjab Higher Education Commission.',
+      'Students maintaining minimum passing SGPA/CGPA automatically receive renewal vouchers without re-application.',
+      'Any unauthorized deduction by university accounts is subject to strict audit inquiry under Punjab Financial Rules.'
+    ],
+    applicableTo: 'Vice Chancellors, Registrars & Treasurers of all Punjab Public Universities & Colleges',
+    verified: true,
+    tags: ['Honhaar Directives', 'Zero Fee Voucher', 'HED Notification', 'Full Tuition Waiver']
+  },
+  {
+    id: 'notif-12',
+    title: 'Notification on Punjab Education Foundation (PEF) QAT 2026 Testing SOPs & Per-Student Subsidy Revision',
+    notificationNumber: 'No. PEF/QA-QAT/2026/410',
+    department: 'Punjab Education Foundation (PEF), School Education Department',
+    category: 'Teacher Policies & SIS',
+    dateIssued: '2026',
+    summary: 'Directives issued to all partner schools regarding mandatory 67% passing threshold in Quality Assurance Test (QAT) 2026, enhanced per-student monthly subsidies, and free PCTB textbook issuance.',
+    keyDirectives: [
+      'Standardized QAT conducted across classes 2 to 10 using computerized OMR bubble sheets.',
+      'Partner schools scoring 67% or above retain full subsidy and expansion eligibility.',
+      'Subsidy rates revised upward for Primary (PKR 1,000), Elementary (PKR 1,200), and Secondary (PKR 1,600).',
+      'Strict ban on partner schools collecting admission or monthly tuition charges from students.'
+    ],
+    applicableTo: 'Principals & Owners of 3,500+ PEF Partner Schools (FAS, EVS & NSP)',
+    verified: true,
+    tags: ['PEF Notification', 'QAT 2026', '67% Passing Benchmark', 'Subsidy Revision', 'Free Education']
+  },
+  {
+    id: 'notif-13',
+    title: 'Notification on CM Punjab Free Laptop Distribution & BISE Sargodha / Punjab Boards Merit Quota',
+    notificationNumber: 'No. SO(Tech)11-9/2026',
+    department: 'Youth Affairs & Higher Education Department, Punjab',
+    category: 'Student Schemes & Scholarships',
+    dateIssued: '2026',
+    summary: 'Standard Operating Procedures for the biometric distribution of brand-new Core i7 laptops to matriculation and intermediate position holders and public university BS students.',
+    keyDirectives: [
+      'Merit lists generated directly from BISE Sargodha and all 8 other Punjab educational boards.',
+      'Mandatory biometric thumbprint verification linked with NADRA on distribution day.',
+      '3% Quota strictly reserved for disabled students with specialized accessibility software.',
+      'Laptops are 100% government funded with zero processing charges.'
+    ],
+    applicableTo: 'High Achievers & Merit Holders in BISE Boards and Public Universities across Punjab',
+    verified: true,
+    tags: ['Free Laptops', 'Core i7', 'BISE Sargodha', 'Merit List', 'Biometric Distribution']
   }
 ];
+
+// Re-export CM Punjab Schemes, Student Scholarships, and PEF Programs
+export * from './schemesAndScholarshipsData';
+export * from './pefData';
 

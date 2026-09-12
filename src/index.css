@@ -1,5 +1,50 @@
 @import "tailwindcss";
 
+/* Windows 7 & Desktop Font Stack with ClearType Optimization */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, -apple-system, BlinkMacSystemFont, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* Windows Desktop Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+::-webkit-scrollbar-thumb {
+  background: #94a3b8;
+  border-radius: 5px;
+  border: 2px solid #f1f5f9;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #64748b;
+}
+
+/* Windows 7 Print Friendly Optimization */
+@media print {
+  header, nav, .floating-actions, .no-print, #mobile-menu-toggle-btn {
+    display: none !important;
+  }
+  body {
+    background: #ffffff !important;
+    color: #000000 !important;
+    font-size: 12pt;
+  }
+  main {
+    padding: 0 !important;
+    margin: 0 !important;
+    max-width: 100% !important;
+  }
+  .print-page-break {
+    page-break-before: always;
+  }
+}
+
 /* Robust gradients and solid fallback styles for 100% public visibility */
 .hero-gradient-dark {
   background-color: #064e3b;

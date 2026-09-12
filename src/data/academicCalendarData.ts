@@ -134,6 +134,58 @@ export const AIOU_ACADEMIC_CALENDAR_EVENTS: AcademicCalendarEvent[] = [
     officialPortalName: 'OAS Admission Portal',
     helplineHelpTopic: 'Spring Phase II Higher Education Guidance'
   },
+  {
+    id: 'cal-adm-bise-sargodha-2026',
+    title: 'BISE Sargodha Matric & Intermediate Online Admission & Registration Drive 2026',
+    semesterCycle: 'Continuous',
+    phase: 'Annual Board Registration',
+    category: 'Admissions',
+    targetPrograms: ['Matric (9th & 10th)', 'Intermediate (11th & 12th / FA/FSc/ICS/I.Com)'],
+    startDate: 'Active Window',
+    endDate: 'Board Schedule 2026',
+    deadlineLabel: 'Regular Fee / Double Fee / Triple Fee Windows',
+    status: 'Active / Open',
+    urgency: 'Critical Milestone',
+    badge: 'BISE SARGODHA',
+    iconName: 'admission',
+    description: 'Online admission forms and online registration returns for Regular & Private candidates under Board of Intermediate & Secondary Education (BISE) Sargodha covering Sargodha, Khushab, Mianwali, and Bhakkar districts.',
+    keyActionItems: [
+      'Private students download challan and submit online admission form on bisesargodha.edu.pk.',
+      'Affiliated schools and colleges submit computerized student registration returns.',
+      'Deposit fee at designated Habib Bank Limited (HBL) or Punjab Bank branches.',
+      'Educare Help Desk (03451291610) provides admission form submission and challan verification.'
+    ],
+    officialPortalUrl: 'https://bisesargodha.edu.pk',
+    officialPortalName: 'BISE Sargodha Portal',
+    helplineHelpTopic: 'BISE Sargodha Admission & Online Form Submission',
+    isHighImpact: true
+  },
+  {
+    id: 'cal-adm-overseas-2026',
+    title: 'AIOU International & Overseas Pakistani Admissions (Worldwide Intake)',
+    semesterCycle: 'Continuous',
+    phase: 'Overseas Admissions',
+    category: 'Admissions',
+    targetPrograms: ['Matric', 'FA', 'I.Com', 'BS (4-Year)', 'B.Ed', 'Postgraduate'],
+    startDate: 'Round-the-Year',
+    endDate: 'Open Intake',
+    deadlineLabel: 'Online Admission Portal Open 24/7',
+    status: 'Active / Open',
+    urgency: 'Active Window',
+    badge: 'OVERSEAS PAKISTANIS',
+    iconName: 'admission',
+    description: 'Special online academic intake for Overseas Pakistanis living in UAE, Saudi Arabia, Kuwait, Qatar, Oman, Bahrain, USA, UK, and Europe with 100% online exams and online workshops.',
+    keyActionItems: [
+      'Register on AIOU Overseas Portal: overseas.aiou.edu.pk.',
+      'Submit scanned passport copy, valid visa / Iqama, and academic certificates.',
+      'Pay fee online using international credit/debit card (Visa / MasterCard).',
+      'All assignments uploaded on LMS and examinations conducted through proctored online system.'
+    ],
+    officialPortalUrl: 'https://overseas.aiou.edu.pk',
+    officialPortalName: 'AIOU Overseas Portal',
+    helplineHelpTopic: 'Overseas Student Online Admission Guidance',
+    isHighImpact: true
+  },
 
   // ==================== ASSIGNMENT DEADLINES ====================
   {
