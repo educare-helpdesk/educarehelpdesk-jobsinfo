@@ -79,10 +79,15 @@ export const InquiryModal: React.FC<InquiryModalProps> = ({
     <div className="fixed inset-0 z-50 bg-slate-950/80 flex items-center justify-center p-2.5 sm:p-4">
       <div className="bg-white rounded-3xl max-w-lg w-full border border-slate-200 shadow-2xl overflow-hidden max-h-[90vh] max-h-[92dvh] flex flex-col animate-in fade-in zoom-in-95 duration-150">
         {/* Header */}
-        <div className="bg-emerald-900 text-white p-4 sm:p-5 flex items-center justify-between border-b border-emerald-800 shrink-0">
-          <div className="flex items-center gap-2">
-            <div className="w-9 h-9 rounded-xl bg-amber-400 text-slate-950 flex items-center justify-center font-bold shrink-0">
-              <GraduationCap className="w-5 h-5" />
+        <div className="bg-emerald-950 text-white p-3.5 sm:p-4 flex items-center justify-between border-b border-emerald-900 shrink-0">
+          <div className="flex items-center gap-2.5">
+            <div className="h-10 w-10 rounded-xl bg-white border border-amber-400 p-0.5 flex items-center justify-center shrink-0 overflow-hidden shadow-xs">
+              <img
+                src="/edu.png"
+                alt="eduCARE HELP DESK"
+                className="w-full h-full object-contain"
+                referrerPolicy="no-referrer"
+              />
             </div>
             <div>
               <h3 className="text-sm sm:text-base font-bold font-serif text-amber-100">Educare Help Desk (03451291610)</h3>
@@ -92,11 +97,23 @@ export const InquiryModal: React.FC<InquiryModalProps> = ({
 
           <button
             onClick={onClose}
-            className="min-h-[44px] min-w-[44px] flex items-center justify-center text-slate-300 hover:text-white hover:bg-emerald-800 rounded-xl transition-colors"
+            className="min-h-[44px] min-w-[44px] flex items-center justify-center text-slate-300 hover:text-white hover:bg-emerald-900 rounded-xl transition-colors"
             aria-label="Close modal"
           >
             <X className="w-5 h-5" />
           </button>
+        </div>
+
+        {/* Official Banner Image Strip */}
+        <div className="bg-slate-900 p-2.5 border-b border-slate-800 shrink-0">
+          <div className="rounded-xl overflow-hidden bg-white p-1 max-w-xs mx-auto border border-amber-400/60 shadow-xs">
+            <img
+              src="/edu.png"
+              alt="eduCARE HELP DESK 24/7 Helpline 03451291610"
+              className="w-full h-auto object-contain"
+              referrerPolicy="no-referrer"
+            />
+          </div>
         </div>
 
         {/* Body Form */}

@@ -46,65 +46,93 @@ export const ProgramsGrid: React.FC<ProgramsGridProps> = ({
         <div className="absolute top-0 right-0 -mr-16 -mt-16 w-80 h-80 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none"></div>
         <div className="absolute bottom-0 left-1/3 -mb-16 w-60 h-60 bg-amber-500/10 rounded-full blur-2xl pointer-events-none"></div>
 
-        <div className="relative z-10 max-w-4xl space-y-4 sm:space-y-5">
-          <div
-            className="inline-flex items-center gap-2 bg-amber-400 text-slate-950 px-3 py-1 rounded-full text-[11px] sm:text-xs font-black uppercase tracking-wider shadow-sm border border-amber-500"
-          >
-            <Sparkles className="w-3.5 h-3.5 text-slate-950 shrink-0" />
-            <span className="truncate">Official Educare Help Desk • 03451291610</span>
-          </div>
+        <div className="relative z-10 space-y-5">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+            <div className="lg:col-span-7 space-y-4">
+              <div
+                className="inline-flex items-center gap-2 bg-amber-400 text-slate-950 px-3 py-1 rounded-full text-[11px] sm:text-xs font-black uppercase tracking-wider shadow-sm border border-amber-500"
+              >
+                <Sparkles className="w-3.5 h-3.5 text-slate-950 shrink-0" />
+                <span className="truncate">Official Educare Help Desk • 03451291610</span>
+              </div>
 
-          <h1 className="text-2xl sm:text-4xl md:text-5xl font-extrabold tracking-tight font-serif text-white leading-tight">
-            Allama Iqbal Open University <br className="hidden sm:inline" />
-            <span className="text-amber-300">Matriculation to Ph.D.</span> Support Portal
-          </h1>
+              <h1 className="text-2xl sm:text-4xl md:text-5xl font-extrabold tracking-tight font-serif text-white leading-tight">
+                Allama Iqbal Open University <br className="hidden sm:inline" />
+                <span className="text-amber-300">Matriculation to Ph.D.</span> Support Portal
+              </h1>
 
-          <p className="text-emerald-50 text-xs sm:text-base md:text-lg leading-relaxed font-medium max-w-2xl">
-            Get instant AI-powered assignment guidance, verified solved assignments, semester fee calculations, assignment cover page generation, and direct helpline support from Educare Help Desk.
-          </p>
+              <p className="text-emerald-50 text-xs sm:text-base md:text-lg leading-relaxed font-medium">
+                Get instant AI-powered assignment guidance, verified solved assignments, semester fee calculations, assignment cover page generation, and direct helpline support from Educare Help Desk.
+              </p>
 
-          <div className="pt-2 flex flex-col sm:flex-row flex-wrap items-stretch sm:items-center gap-2.5 sm:gap-3">
-            <a
-              href={`tel:${HELPDESK_PHONE}`}
-              className="w-full sm:w-auto min-h-[46px] inline-flex items-center justify-center gap-2 bg-amber-400 hover:bg-amber-300 text-slate-950 px-5 py-3 rounded-xl font-black text-sm sm:text-base transition-all shadow-md border border-amber-500"
-            >
-              <Phone className="w-5 h-5 text-slate-950" />
-              <span>Call Helpline: {HELPDESK_PHONE}</span>
-            </a>
+              <div className="pt-1 flex flex-col sm:flex-row flex-wrap items-stretch sm:items-center gap-2.5 sm:gap-3">
+                <a
+                  href={`tel:${HELPDESK_PHONE}`}
+                  className="w-full sm:w-auto min-h-[46px] inline-flex items-center justify-center gap-2 bg-amber-400 hover:bg-amber-300 text-slate-950 px-5 py-3 rounded-xl font-black text-sm sm:text-base transition-all shadow-md border border-amber-500"
+                >
+                  <Phone className="w-5 h-5 text-slate-950" />
+                  <span>Call Helpline: {HELPDESK_PHONE}</span>
+                </a>
 
-            <button
-              onClick={() => setActiveTab('bise-sargodha')}
-              className="w-full sm:w-auto min-h-[46px] inline-flex items-center justify-center gap-2 bg-emerald-700 hover:bg-emerald-600 text-white border-2 border-emerald-400 px-5 py-3 rounded-xl font-extrabold text-sm sm:text-base transition-all shadow-md"
-            >
-              <Building className="w-5 h-5 text-amber-300" />
-              <span>BISE Sargodha Portal</span>
-            </button>
+                <a
+                  href={whatsappUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full sm:w-auto min-h-[46px] inline-flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-500 text-white border border-emerald-400 px-5 py-3 rounded-xl font-bold text-sm sm:text-base transition-all shadow-md"
+                >
+                  <MessageCircle className="w-5 h-5 text-emerald-200" />
+                  <span>WhatsApp Chat</span>
+                </a>
 
-            <button
-              onClick={() => setActiveTab('exam-countdown')}
-              className="w-full sm:w-auto min-h-[46px] inline-flex items-center justify-center gap-2 bg-slate-900 hover:bg-slate-800 text-amber-300 border-2 border-amber-400/80 px-5 py-3 rounded-xl font-extrabold text-sm sm:text-base transition-all shadow-md"
-            >
-              <Clock className="w-5 h-5 text-amber-400 animate-pulse" />
-              <span>Exam Countdown Timer</span>
-            </button>
+                <button
+                  onClick={() => setActiveTab('bise-sargodha')}
+                  className="w-full sm:w-auto min-h-[46px] inline-flex items-center justify-center gap-2 bg-emerald-700 hover:bg-emerald-600 text-white border-2 border-emerald-400 px-4 py-3 rounded-xl font-extrabold text-sm transition-all shadow-md"
+                >
+                  <Building className="w-4 h-4 text-amber-300" />
+                  <span>BISE Sargodha</span>
+                </button>
 
-            <a
-              href={whatsappUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-full sm:w-auto min-h-[46px] inline-flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-500 text-white border border-emerald-400 px-5 py-3 rounded-xl font-bold text-sm sm:text-base transition-all shadow-md"
-            >
-              <MessageCircle className="w-5 h-5 text-emerald-200" />
-              <span>WhatsApp Chat</span>
-            </a>
+                <button
+                  onClick={() => setActiveTab('exam-countdown')}
+                  className="w-full sm:w-auto min-h-[46px] inline-flex items-center justify-center gap-2 bg-slate-900 hover:bg-slate-800 text-amber-300 border-2 border-amber-400/80 px-4 py-3 rounded-xl font-extrabold text-sm transition-all shadow-md"
+                >
+                  <Clock className="w-4 h-4 text-amber-400 animate-pulse" />
+                  <span>Exam Timer</span>
+                </button>
+              </div>
+            </div>
 
-            <button
-              onClick={() => setActiveTab('ai-solver')}
-              className="w-full sm:w-auto min-h-[46px] inline-flex items-center justify-center gap-2 bg-slate-800 hover:bg-slate-700 text-white border border-slate-600 px-5 py-3 rounded-xl font-bold text-sm sm:text-base transition-all shadow-sm"
-            >
-              <Sparkles className="w-4 h-4 text-amber-300" />
-              <span>Try AI Assignment Solver</span>
-            </button>
+            {/* Official Picture Card */}
+            <div className="lg:col-span-5 flex flex-col items-center">
+              <div className="w-full max-w-md bg-white rounded-3xl p-3 border-2 border-amber-400 shadow-2xl relative group">
+                <div className="rounded-2xl overflow-hidden bg-slate-950/5 border border-slate-200">
+                  <img
+                    src="/edu.png"
+                    alt="eduCARE HELP DESK 24/7 Helpline 03451291610"
+                    className="w-full h-auto object-contain transition-transform duration-300 group-hover:scale-[1.02]"
+                    referrerPolicy="no-referrer"
+                  />
+                </div>
+                <div className="mt-3 flex items-center justify-between gap-2 px-1">
+                  <a
+                    href={`tel:${HELPDESK_PHONE}`}
+                    className="flex-1 bg-slate-950 hover:bg-slate-900 text-amber-400 font-extrabold text-xs py-2 px-3 rounded-xl flex items-center justify-center gap-1.5 border border-slate-800 transition-colors"
+                  >
+                    <Phone className="w-3.5 h-3.5 text-amber-400" />
+                    <span>03451291610</span>
+                  </a>
+                  <a
+                    href={whatsappUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex-1 bg-emerald-700 hover:bg-emerald-600 text-white font-extrabold text-xs py-2 px-3 rounded-xl flex items-center justify-center gap-1.5 transition-colors"
+                  >
+                    <MessageCircle className="w-3.5 h-3.5 text-emerald-200" />
+                    <span>WhatsApp Desk</span>
+                  </a>
+                </div>
+              </div>
+            </div>
           </div>
 
           <div className="pt-3 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-3 text-xs sm:text-sm text-emerald-100 font-bold">

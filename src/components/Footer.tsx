@@ -14,8 +14,15 @@ export const Footer: React.FC<FooterProps> = ({ setActiveTab }) => {
       {/* Upper Helpline Strip */}
       <div className="bg-emerald-950 border-b border-emerald-900/60 py-4 px-4">
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left">
-          <div className="flex items-center gap-2">
-            <GraduationCap className="w-6 h-6 text-amber-400" />
+          <div className="flex items-center gap-2.5">
+            <div className="h-9 w-9 rounded-xl bg-white border border-amber-400 p-0.5 shrink-0 overflow-hidden">
+              <img
+                src="/edu.png"
+                alt="eduCARE HELP DESK"
+                className="w-full h-full object-contain"
+                referrerPolicy="no-referrer"
+              />
+            </div>
             <span className="font-bold text-slate-100 text-sm">
               Educare Help Desk • Allama Iqbal Open University (AIOU) Support Portal
             </span>
@@ -46,9 +53,14 @@ export const Footer: React.FC<FooterProps> = ({ setActiveTab }) => {
       {/* Main Footer Links */}
       <div className="max-w-7xl mx-auto px-4 py-8 grid grid-cols-1 md:grid-cols-4 gap-6">
         <div className="space-y-3 md:col-span-1">
-          <h3 className="text-sm font-bold text-white font-serif flex items-center gap-2">
-            <span>Educare Help Desk</span>
-          </h3>
+          <div className="rounded-2xl overflow-hidden bg-white p-1.5 border border-amber-400/60 shadow-md">
+            <img
+              src="/edu.png"
+              alt="eduCARE HELP DESK 24/7 Helpline 03451291610"
+              className="w-full h-auto object-contain rounded-lg"
+              referrerPolicy="no-referrer"
+            />
+          </div>
           <p className="text-slate-400 leading-relaxed text-[11px]">
             Comprehensive student support service for Allama Iqbal Open University learners across Pakistan and overseas. Assisting Matric, FA, BA, BS, B.Ed, Master, M.Phil, and Ph.D. students.
           </p>

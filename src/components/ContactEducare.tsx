@@ -68,37 +68,55 @@ export const ContactEducare: React.FC<ContactEducareProps> = ({
     <div className="space-y-8 pb-12">
       {/* Contact Banner */}
       <div
-        className="bg-gradient-to-br from-emerald-950 via-slate-900 to-emerald-900 bg-emerald-950 text-white rounded-2xl p-6 sm:p-10 shadow-lg border-2 border-emerald-700"
+        className="bg-gradient-to-br from-emerald-950 via-slate-900 to-emerald-900 bg-emerald-950 text-white rounded-3xl p-6 sm:p-10 shadow-xl border-2 border-emerald-700"
       >
-        <div className="max-w-3xl space-y-4">
-          <span className="bg-amber-400 text-slate-950 font-extrabold text-[11px] uppercase tracking-wider px-3 py-1 rounded-full">
-            Official Educare Helpline
-          </span>
-          <h2 className="text-2xl sm:text-4xl font-bold font-serif text-amber-200">
-            Contact Educare Help Desk: 03451291610
-          </h2>
-          <p className="text-emerald-100/90 text-xs sm:text-base leading-relaxed">
-            Have queries regarding Allama Iqbal Open University (AIOU) admissions, solved assignments, LMS workshops, CMS portal, or degree verification? Reach out to our helpline directly.
-          </p>
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+          <div className="lg:col-span-7 space-y-4">
+            <span className="bg-amber-400 text-slate-950 font-extrabold text-[11px] uppercase tracking-wider px-3 py-1 rounded-full">
+              Official Educare Helpline
+            </span>
+            <h2 className="text-2xl sm:text-4xl font-bold font-serif text-amber-200">
+              Contact Educare Help Desk: 03451291610
+            </h2>
+            <p className="text-emerald-100/90 text-xs sm:text-base leading-relaxed">
+              Have queries regarding Allama Iqbal Open University (AIOU) admissions, solved assignments, LMS workshops, CMS portal, or degree verification? Reach out to our helpline directly.
+            </p>
 
-          <div className="flex flex-wrap gap-3 pt-2">
-            <a
-              href={`tel:${HELPDESK_PHONE}`}
-              className="bg-amber-400 hover:bg-amber-300 text-slate-950 font-black px-5 py-3 rounded-xl text-sm flex items-center gap-2 shadow-md"
-            >
-              <Phone className="w-4 h-4 text-slate-950" />
-              <span>Call Helpline: {HELPDESK_PHONE}</span>
-            </a>
+            <div className="flex flex-wrap gap-3 pt-2">
+              <a
+                href={`tel:${HELPDESK_PHONE}`}
+                className="bg-amber-400 hover:bg-amber-300 text-slate-950 font-black px-5 py-3 rounded-xl text-sm flex items-center gap-2 shadow-md"
+              >
+                <Phone className="w-4 h-4 text-slate-950" />
+                <span>Call Helpline: {HELPDESK_PHONE}</span>
+              </a>
 
-            <a
-              href={whatsappDirectUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-emerald-700 hover:bg-emerald-600 text-white font-bold px-5 py-3 rounded-xl text-sm flex items-center gap-2 shadow-md border border-emerald-500/50"
-            >
-              <MessageCircle className="w-4 h-4 text-emerald-300" />
-              <span>WhatsApp Chat (03451291610)</span>
-            </a>
+              <a
+                href={whatsappDirectUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-emerald-700 hover:bg-emerald-600 text-white font-bold px-5 py-3 rounded-xl text-sm flex items-center gap-2 shadow-md border border-emerald-500/50"
+              >
+                <MessageCircle className="w-4 h-4 text-emerald-300" />
+                <span>WhatsApp Chat (03451291610)</span>
+              </a>
+            </div>
+          </div>
+
+          <div className="lg:col-span-5 flex flex-col items-center">
+            <div className="w-full max-w-sm bg-white rounded-3xl p-3 border-2 border-amber-400 shadow-xl">
+              <div className="rounded-2xl overflow-hidden bg-slate-950/5 border border-slate-200">
+                <img
+                  src="/edu.png"
+                  alt="eduCARE HELP DESK Official 03451291610"
+                  className="w-full h-auto object-contain"
+                  referrerPolicy="no-referrer"
+                />
+              </div>
+              <div className="mt-2.5 text-center text-xs font-bold text-slate-700">
+                24/7 Student Support Desk • Helpline: 03451291610
+              </div>
+            </div>
           </div>
         </div>
       </div>

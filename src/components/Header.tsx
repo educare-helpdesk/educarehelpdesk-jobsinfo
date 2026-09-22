@@ -111,8 +111,13 @@ export const Header: React.FC<HeaderProps> = ({
       <div className="max-w-7xl mx-auto px-3 sm:px-4 py-2.5 sm:py-4 flex flex-col md:flex-row md:items-center justify-between gap-3">
         <div className="flex items-center justify-between w-full md:w-auto">
           <div className="flex items-center gap-2.5 sm:gap-3.5 cursor-pointer" onClick={() => handleSelectTab('programs')}>
-            <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-2xl flex items-center justify-center shadow-md bg-emerald-900 text-amber-300 border-2 border-amber-400/60 shrink-0">
-              <GraduationCap className="w-6 h-6 sm:w-7 sm:h-7 text-amber-300" />
+            <div className="h-12 w-12 sm:h-14 sm:w-14 rounded-2xl flex items-center justify-center shadow-md bg-white border-2 border-amber-400 p-0.5 shrink-0 overflow-hidden hover:scale-105 transition-transform">
+              <img
+                src="/edu.png"
+                alt="eduCARE HELP DESK"
+                className="w-full h-full object-contain"
+                referrerPolicy="no-referrer"
+              />
             </div>
             <div>
               <div className="flex items-center gap-1.5 sm:gap-2">
@@ -120,11 +125,11 @@ export const Header: React.FC<HeaderProps> = ({
                   Educare Help Desk
                 </h1>
                 <span className="bg-amber-400 text-slate-950 text-[10px] sm:text-[11px] font-black px-2 py-0.5 rounded-full uppercase tracking-wider border border-amber-500 shadow-2xs shrink-0">
-                  AIOU & BISE Desk
+                  03451291610
                 </span>
               </div>
               <p className="text-[10px] sm:text-xs text-emerald-900 font-bold tracking-tight mt-0.5 line-clamp-1">
-                Matric • Inter • BA/BS • B.Ed • Master • Ph.D Support Center
+                24/7 Student Support • Matric • Inter • BA/BS • B.Ed • Master • Ph.D
               </p>
             </div>
           </div>
@@ -296,12 +301,17 @@ export const Header: React.FC<HeaderProps> = ({
             {/* Drawer Top Header */}
             <div className="bg-emerald-950 text-white p-4 flex items-center justify-between border-b border-emerald-900 shrink-0">
               <div className="flex items-center gap-2.5">
-                <div className="w-9 h-9 rounded-xl bg-amber-400 text-slate-950 flex items-center justify-center font-bold shrink-0">
-                  <GraduationCap className="w-5 h-5 text-slate-950" />
+                <div className="h-9 w-9 rounded-xl bg-white border border-amber-400 p-0.5 flex items-center justify-center shrink-0 overflow-hidden">
+                  <img
+                    src="/edu.png"
+                    alt="eduCARE HELP DESK"
+                    className="w-full h-full object-contain"
+                    referrerPolicy="no-referrer"
+                  />
                 </div>
                 <div>
-                  <h3 className="text-base font-bold font-serif text-white">Educare Portals Hub</h3>
-                  <p className="text-[11px] text-emerald-200 font-medium">Select from 15+ student services</p>
+                  <h3 className="text-base font-bold font-serif text-white">Educare Help Desk</h3>
+                  <p className="text-[11px] text-amber-300 font-bold">Helpline: 03451291610</p>
                 </div>
               </div>
 
@@ -312,6 +322,18 @@ export const Header: React.FC<HeaderProps> = ({
               >
                 <X className="w-6 h-6" />
               </button>
+            </div>
+
+            {/* Official EduCare Help Desk Banner Card */}
+            <div className="p-3 bg-slate-900 border-b border-slate-800 shrink-0">
+              <div className="rounded-xl overflow-hidden border border-amber-400/60 shadow-md bg-white p-1">
+                <img
+                  src="/edu.png"
+                  alt="eduCARE HELP DESK 24/7 Helpline 03451291610"
+                  className="w-full h-auto object-contain rounded-lg"
+                  referrerPolicy="no-referrer"
+                />
+              </div>
             </div>
 
             {/* Instant Search Bar */}
