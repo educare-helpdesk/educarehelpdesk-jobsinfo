@@ -1,6 +1,6 @@
 {
   "name": "Educare Help Desk - AIOU Student Portal",
-  "description": "Comprehensive student support desk with typing speed test (WPM counter, PPSC Junior Clerk & DEO standards, touch-typing notes & tips), CM Punjab youth schemes, student scholarships, PEF portal, 2026 admissions, jobs, official downloadable forms, academic calendar, solved assignments hub, fee estimator, and BISE Sargodha services. Helpline: 03451291610.",
+  "description": "Educare Help Desk - Your Guide to a Brighter Future! Providing easy-to-understand guidance on university, college, and school admissions, scholarships, entry tests, career planning, typing speed test, solved assignments, official downloadable forms, and student support. Helpline: 03451291610.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }

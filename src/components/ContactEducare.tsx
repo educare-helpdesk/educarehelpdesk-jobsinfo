@@ -104,17 +104,18 @@ export const ContactEducare: React.FC<ContactEducareProps> = ({
           </div>
 
           <div className="lg:col-span-5 flex flex-col items-center">
-            <div className="w-full max-w-sm bg-white rounded-3xl p-3 border-2 border-amber-400 shadow-xl">
-              <div className="rounded-2xl overflow-hidden bg-slate-950/5 border border-slate-200">
+            <div className="w-full max-w-md bg-white rounded-3xl p-3 border-2 border-amber-400 shadow-xl group">
+              <div className="rounded-2xl overflow-hidden bg-slate-950 border border-slate-200 shadow-inner">
                 <img
-                  src="/edu.png"
-                  alt="eduCARE HELP DESK Official 03451291610"
-                  className="w-full h-auto object-contain"
+                  src="/educare-description.png"
+                  alt="Educare Help Desk - Your Guide to a Brighter Future! Website Description"
+                  className="w-full h-auto object-cover transition-transform duration-300 group-hover:scale-[1.02]"
                   referrerPolicy="no-referrer"
                 />
               </div>
-              <div className="mt-2.5 text-center text-xs font-bold text-slate-700">
-                24/7 Student Support Desk • Helpline: 03451291610
+              <div className="mt-2.5 flex items-center justify-between text-xs font-bold text-slate-700 px-1">
+                <span>Learn. Choose. Succeed.</span>
+                <span className="text-emerald-700 font-extrabold">Helpline: 03451291610</span>
               </div>
             </div>
           </div>

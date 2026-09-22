@@ -86,6 +86,8 @@ export const Footer: React.FC<FooterProps> = ({ setActiveTab }) => {
         <div className="space-y-2">
           <h4 className="text-xs font-bold text-white uppercase tracking-wider">Quick Tools & Guides</h4>
           <ul className="space-y-1 text-[11px] text-slate-400">
+            <li><button onClick={() => setActiveTab('about-desk')} className="hover:text-amber-300 font-bold text-amber-300">About Educare (Website Description)</button></li>
+            <li><button onClick={() => setActiveTab('typing-test')} className="hover:text-amber-300 font-bold text-emerald-400">Typing Speed Test & Notes</button></li>
             <li><button onClick={() => setActiveTab('faqs')} className="hover:text-amber-300 font-bold text-amber-300">AIOU & Exam FAQs (All Guides)</button></li>
             <li><button onClick={() => setActiveTab('ai-solver')} className="hover:text-amber-300">AI Assignment Solver</button></li>
             <li><button onClick={() => setActiveTab('solved-assignments')} className="hover:text-amber-300">Solved Assignments Catalog</button></li>

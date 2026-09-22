@@ -4,6 +4,7 @@ import { AIOU_PROGRAMS, HELPDESK_PHONE, HELPDESK_WHATSAPP } from '../data/aiouDa
 import { GraduationCap, BookOpen, Clock, Layers, Sparkles, CheckCircle2, Phone, MessageCircle, ArrowRight, ShieldCheck, Briefcase, Building } from 'lucide-react';
 import { QuickExamTipsCarousel } from './QuickExamTipsCarousel';
 import { StudentQuickStats } from './StudentQuickStats';
+import { WebsiteDescriptionCard } from './WebsiteDescriptionCard';
 
 interface ProgramsGridProps {
   onSelectProgramForAi: (level: ProgramLevel, code?: string) => void;
@@ -163,6 +164,12 @@ export const ProgramsGrid: React.FC<ProgramsGridProps> = ({
           </div>
         </div>
       </section>
+
+      {/* Official Educare Website Description & Picture Showcase */}
+      <WebsiteDescriptionCard
+        onOpenInquiry={() => onOpenInquiry()}
+        onNavigateTab={setActiveTab}
+      />
 
       {/* Student Quick-Stats Widget for Logged-In Students */}
       <StudentQuickStats

@@ -16,6 +16,7 @@ import { AcademicUpdates } from './components/AcademicUpdates';
 import { AcademicCalendar } from './components/AcademicCalendar';
 import { FormsDownloadHub } from './components/FormsDownloadHub';
 import { TypingPortal } from './components/TypingPortal';
+import { WebsiteDescriptionCard } from './components/WebsiteDescriptionCard';
 import { Footer } from './components/Footer';
 import { InquiryModal } from './components/InquiryModal';
 import { ProgramLevel } from './types';
@@ -156,6 +157,18 @@ export default function App() {
             initialLevel={selectedLevel}
             initialCode={selectedCode}
           />
+        )}
+
+        {activeTab === 'about-desk' && (
+          <div className="space-y-8 pb-12">
+            <WebsiteDescriptionCard
+              onOpenInquiry={() => handleOpenInquiry()}
+              onNavigateTab={(tab) => {
+                setActiveTab(tab);
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }}
+            />
+          </div>
         )}
       </main>
 
