@@ -37,14 +37,16 @@ import {
   Layers,
   ChevronDown,
   ChevronUp,
-  School
+  School,
+  Keyboard
 } from 'lucide-react';
 
 export interface JobsPortalProps {
   initialTab?: 'jobs' | 'schemes' | 'scholarships' | 'pef' | 'notifications';
+  onNavigateTab?: (tab: string) => void;
 }
 
-export const JobsPortal: React.FC<JobsPortalProps> = ({ initialTab = 'jobs' }) => {
+export const JobsPortal: React.FC<JobsPortalProps> = ({ initialTab = 'jobs', onNavigateTab }) => {
   const [activeMainTab, setActiveMainTab] = useState<'jobs' | 'schemes' | 'scholarships' | 'pef' | 'notifications'>(initialTab);
 
   useEffect(() => {
@@ -410,6 +412,38 @@ export const JobsPortal: React.FC<JobsPortalProps> = ({ initialTab = 'jobs' }) =
                 </button>
               ))}
             </div>
+          </div>
+
+          {/* Quick Typing Speed Test Banner for Junior Clerk & DEO Applicants */}
+          <div className="bg-gradient-to-r from-slate-900 via-emerald-950 to-slate-900 text-white p-4 sm:p-5 rounded-3xl border-2 border-amber-400/80 shadow-md flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-2xl bg-amber-400 text-slate-950 flex items-center justify-center font-black shrink-0 shadow-sm">
+                <Keyboard className="w-5 h-5" />
+              </div>
+              <div className="space-y-0.5">
+                <div className="flex items-center gap-2">
+                  <span className="bg-amber-400 text-slate-950 font-black text-[9px] uppercase px-2 py-0.5 rounded">
+                    Clerical Exam Prep
+                  </span>
+                  <span className="text-xs font-bold text-emerald-200">
+                    PPSC Junior Clerk & DEO Typing Speed Test
+                  </span>
+                </div>
+                <p className="text-xs text-slate-300">
+                  Practice 1-min & 5-min official passages with touch-typing Home Row notes to reach 30+ to 45+ WPM.
+                </p>
+              </div>
+            </div>
+
+            {onNavigateTab && (
+              <button
+                onClick={() => onNavigateTab('typing-test')}
+                className="bg-amber-400 hover:bg-amber-300 text-slate-950 font-black text-xs px-4 py-2.5 rounded-xl transition-all shadow-md shrink-0 flex items-center justify-center gap-1.5"
+              >
+                <span>Launch Typing Speed Test</span>
+                <ChevronRight className="w-4 h-4" />
+              </button>
+            )}
           </div>
 
           {/* Jobs Count Info */}

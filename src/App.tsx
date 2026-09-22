@@ -15,6 +15,7 @@ import { StudyResources } from './components/StudyResources';
 import { AcademicUpdates } from './components/AcademicUpdates';
 import { AcademicCalendar } from './components/AcademicCalendar';
 import { FormsDownloadHub } from './components/FormsDownloadHub';
+import { TypingPortal } from './components/TypingPortal';
 import { Footer } from './components/Footer';
 import { InquiryModal } from './components/InquiryModal';
 import { ProgramLevel } from './types';
@@ -120,6 +121,7 @@ export default function App() {
 
         {(activeTab === 'jobs' || activeTab === 'schemes' || activeTab === 'scholarships' || activeTab === 'pef') && (
           <JobsPortal
+            onNavigateTab={(tab) => setActiveTab(tab)}
             initialTab={
               activeTab === 'schemes'
                 ? 'schemes'
@@ -136,6 +138,10 @@ export default function App() {
           <div className="space-y-8">
             <ExamCountdown onNavigateTab={(tab) => setActiveTab(tab)} />
           </div>
+        )}
+
+        {activeTab === 'typing-test' && (
+          <TypingPortal onNavigateTab={(tab) => setActiveTab(tab)} />
         )}
 
         {activeTab === 'study-resources' && (
