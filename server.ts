@@ -723,6 +723,168 @@ Return strictly JSON.`;
   }
 });
 
+// Spoken English AI Practice & Grammar Analyzer by Instructor Nusrat Waqar
+app.post("/api/ai/english-coach", async (req, res) => {
+  const { userSentence, currentTopic, practiceMode = 'general', targetLevel = 'Intermediate' } = req.body || {};
+
+  if (!userSentence || typeof userSentence !== 'string' || !userSentence.trim()) {
+    return res.status(400).json({ error: "Please provide a sentence or question to practice." });
+  }
+
+  const trimmed = userSentence.trim();
+
+  try {
+    const systemInstruction = `You are "Instructor Nusrat Waqar", Senior English Language Coach & Communication Specialist at Educare Help Desk (Helpline: 03451291610).
+Your mission is to help Pakistani learners (Matric, FA, BA, BS, B.Ed, M.Phil students, and job applicants) master spoken English fluency, build confidence, and master practical grammar without fear.
+
+When a student submits a spoken sentence, dialogue response, or grammar question:
+1. Assess their grammatical accuracy, natural flow, tone, and pronunciation nuances.
+2. Return a strictly valid JSON object with:
+   - "correctedSentence": string (the most natural, polite, and grammatically correct version)
+   - "grammarScore": number (0 to 100)
+   - "level": string ("Beginner" | "Intermediate" | "Advanced")
+   - "mistakes": array of objects { "issue": string, "explanation": string, "rule": string }
+   - "nativeAlternatives": array of 2-3 strings (how native English speakers or professionals say it smoothly)
+   - "pronunciationTips": string (accent, stress, or silent letter guidance for key words)
+   - "instructorEncouragement": string (warm, motivating 1-2 sentence message signed "Instructor Nusrat Waqar")
+   - "nextPracticePrompt": string (a follow-up question or scenario prompt to keep the conversation going)`;
+
+    const prompt = `Student's input: "${trimmed}"
+Context / Mode: ${practiceMode}
+Topic: ${currentTopic || 'Daily Conversation'}
+Target Level: ${targetLevel}
+
+Analyze and return strictly valid JSON.`;
+
+    const response = await ai.models.generateContent({
+      model: "gemini-3.7-flash",
+      contents: prompt,
+      config: {
+        systemInstruction,
+        responseMimeType: "application/json",
+        temperature: 0.4,
+      }
+    });
+
+    const jsonText = response.text || "{}";
+    let analysisResult: any = null;
+
+    try {
+      analysisResult = JSON.parse(jsonText);
+    } catch (parseErr) {
+      const match = jsonText.match(/\{[\s\S]*\}/);
+      if (match) {
+        try {
+          analysisResult = JSON.parse(match[0]);
+        } catch (e) {
+          analysisResult = null;
+        }
+      }
+    }
+
+    if (!analysisResult || !analysisResult.correctedSentence) {
+      analysisResult = generateFallbackEnglishFeedback(trimmed, currentTopic);
+    }
+
+    return res.json({
+      success: true,
+      data: analysisResult,
+      isAiGenerated: true,
+      timestamp: new Date().toISOString()
+    });
+  } catch (err: any) {
+    console.warn("Gemini error in /api/ai/english-coach, using rule-based coach engine:", err?.message || err);
+    const fallbackData = generateFallbackEnglishFeedback(trimmed, currentTopic);
+    return res.json({
+      success: true,
+      data: fallbackData,
+      isFallback: true,
+      timestamp: new Date().toISOString()
+    });
+  }
+});
+
+function generateFallbackEnglishFeedback(sentence: string, topic?: string) {
+  const lower = sentence.toLowerCase().trim();
+  let corrected = sentence;
+  const mistakes: any[] = [];
+  let score = 88;
+  let nativeAlts = [
+    sentence,
+    `In polite conversation: "Excuse me, ${sentence.charAt(0).toLowerCase() + sentence.slice(1)}"`,
+    `Professional version: "I would like to state that ${sentence.toLowerCase()}."`
+  ];
+  let pronunciationTips = "Keep your pace calm and steady. Stress key content words (nouns and main verbs) and soften helper words.";
+
+  if (/did(n['’]?t|\s+not)\s+went/i.test(sentence)) {
+    corrected = sentence.replace(/did(n['’]?t|\s+not)\s+went/gi, (match) => {
+      return match.toLowerCase().includes("not") ? "did not go" : "didn't go";
+    });
+    mistakes.push({
+      issue: "Verb form after 'did not'",
+      explanation: "Did already marks the past tense. Always use the 1st base form (go) after did/didn't.",
+      rule: "Rule: Did / Didn't + V1 (Base Form)"
+    });
+    score = 68;
+    nativeAlts = ["I didn't go to the university yesterday.", "I couldn't make it there yesterday.", "I was unable to attend."];
+    pronunciationTips = "Pronounce 'didn't' smoothly as /dɪd-nt/ without hard stopping.";
+  }
+
+  if (/(^|\s)myself\s+([A-Za-z]+)/i.test(corrected)) {
+    corrected = corrected.replace(/(^|\s)myself\s+([A-Za-z]+)/gi, "$1My name is $2");
+    mistakes.push({
+      issue: "Using 'Myself' as subject",
+      explanation: "Myself is a reflexive pronoun. In standard English introductions, always use 'My name is...' or 'I am...'.",
+      rule: "Rule: Subject pronoun 'I' or 'My name is' for introductions."
+    });
+    score = Math.min(score, 72);
+  }
+
+  if (lower.includes("one of my friend ") || lower.includes("one of my friend,")) {
+    corrected = corrected.replace(/one of my friend\b/gi, "one of my friends");
+    mistakes.push({
+      issue: "Singular noun after 'one of my'",
+      explanation: "When speaking of one person out of a group, the noun must be plural: 'one of my friends'.",
+      rule: "Rule: One of + Plural Noun + Singular Verb"
+    });
+    score = Math.min(score, 75);
+    nativeAlts = ["One of my friends is studying at AIOU.", "A close friend of mine mentioned this."];
+  }
+
+  if (lower.includes("good name")) {
+    corrected = sentence.replace(/what is your good name\??/gi, "May I have your name, please?");
+    mistakes.push({
+      issue: "Literal Urdu translation 'Shubh/Acha Naam'",
+      explanation: "In English, simply ask 'May I have your name, please?' or 'What is your name?'.",
+      rule: "Rule: Use polite modal 'May I ask your name?'"
+    });
+    score = Math.min(score, 80);
+    nativeAlts = ["May I know your name, please?", "Could I ask who I am speaking with?", "What should I call you?"];
+  }
+
+  if (lower.includes("doubt")) {
+    corrected = sentence.replace(/i am having a doubt/gi, "I have a question").replace(/i have a doubt/gi, "I have a question");
+    mistakes.push({
+      issue: "Using 'doubt' instead of 'question'",
+      explanation: "In English, 'doubt' implies suspicion or mistrust. Use 'I have a question' or 'I need clarification'.",
+      rule: "Rule: Use 'I have a question' for academic clarification."
+    });
+    score = Math.min(score, 82);
+    nativeAlts = ["I have a question regarding this assignment.", "Could you clarify this point for me?", "I'm not quite clear on this."];
+  }
+
+  return {
+    correctedSentence: corrected,
+    grammarScore: score,
+    level: "Intermediate",
+    mistakes,
+    nativeAlternatives: nativeAlts,
+    pronunciationTips,
+    instructorEncouragement: "Great effort! Speaking English takes continuous practice. You are getting better with every sentence! — Instructor Nusrat Waqar (03451291610)",
+    nextPracticePrompt: "Can you now share a 1-minute thought on your future academic or career goals?"
+  };
+}
+
 // Live AIOU News & Exam Alerts Endpoint via Gemini + Google Search Grounding
 app.get("/api/news/latest", async (req, res) => {
   // Return cached data if fresh

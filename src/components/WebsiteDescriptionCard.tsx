@@ -74,6 +74,14 @@ export const WebsiteDescriptionCard: React.FC<WebsiteDescriptionCardProps> = ({
       tab: "programs"
     },
     {
+      title: "Spoken English & Grammar Lessons",
+      desc: "Structured lessons, voice practice, instructor notes, and grammar rules by Instructor Nusrat Waqar.",
+      icon: BookOpen,
+      color: "bg-emerald-700 text-white",
+      badge: "Instructor Nusrat Waqar",
+      tab: "spoken-english"
+    },
+    {
       title: "Study Tips & Student Guidance",
       desc: "Touch-typing speed tests, solved assignment hub, CMS/LMS support, and 24/7 helpline assistance.",
       icon: Sparkles,
@@ -217,7 +225,7 @@ export const WebsiteDescriptionCard: React.FC<WebsiteDescriptionCardProps> = ({
               </p>
             </div>
             <span className="text-xs font-bold text-emerald-800 bg-emerald-100 px-3 py-1 rounded-full self-start sm:self-auto">
-              6 Core Service Pillars
+              7 Core Service Pillars
             </span>
           </div>
 

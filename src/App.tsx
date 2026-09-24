@@ -16,6 +16,7 @@ import { AcademicUpdates } from './components/AcademicUpdates';
 import { AcademicCalendar } from './components/AcademicCalendar';
 import { FormsDownloadHub } from './components/FormsDownloadHub';
 import { TypingPortal } from './components/TypingPortal';
+import { SpokenEnglishPortal } from './components/SpokenEnglishPortal';
 import { WebsiteDescriptionCard } from './components/WebsiteDescriptionCard';
 import { Footer } from './components/Footer';
 import { InquiryModal } from './components/InquiryModal';
@@ -143,6 +144,13 @@ export default function App() {
 
         {activeTab === 'typing-test' && (
           <TypingPortal onNavigateTab={(tab) => setActiveTab(tab)} />
+        )}
+
+        {activeTab === 'spoken-english' && (
+          <SpokenEnglishPortal
+            onNavigateTab={(tab) => setActiveTab(tab)}
+            onOpenInquiry={() => handleOpenInquiry()}
+          />
         )}
 
         {activeTab === 'study-resources' && (
